@@ -1,5 +1,16 @@
 # Dyla
 
+# Todo
+
+- welcome controller
+- create start page, "start, game rules", basic login
+- game controller
+
+forms:
+- player hand
+- shop
+- welcome menu?
+
 # Intro
 
 Deckbuilder game in the style of Dominion.
