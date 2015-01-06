@@ -30,3 +30,5 @@ p this is a partial
   p
     ' hand
     = @new_state.hand
+  = form_for @new_state do |f|
+    .actions = f.submit 'Done'

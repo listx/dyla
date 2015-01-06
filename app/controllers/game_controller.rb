@@ -1,9 +1,14 @@
 class GameController < ApplicationController
   include GameHelper
 
-  before_action :set_game_state, only: [:create, :battle]
+  before_action :set_game_state, only: [:create, :battle,:processturn]
 
   def create
+    redirect_to battle_path
+  end
+
+  def processturn
+
     redirect_to battle_path
   end
 
