@@ -1,0 +1,9 @@
+= form_for @gamestate do |f|
+  - if @gamestate.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@gamestate.errors.count, "error")} prohibited this gamestate from being saved:"
+      ul
+        - @gamestate.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

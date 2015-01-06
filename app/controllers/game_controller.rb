@@ -1,15 +1,19 @@
 class GameController < ApplicationController
   include GameHelper
 
-  before_action :set_game_state, only: [:create, :battle,:processturn]
+  before_action :set_game_state, only: [:battle, :processturn]
 
   def create
-    redirect_to battle_path
+    @game_state = Gamestate.new
+    sanitize!(@game_state)
+    @game_state.save
+    redirect_to action: 'battle', id: @game_state.id
   end
 
   def processturn
-
-    redirect_to battle_path
+    @game_state.turns += 1
+    @game_state.save
+    redirect_to action: 'battle', id: @game_state.id
   end
 
   def battle
@@ -46,8 +50,7 @@ class GameController < ApplicationController
   end
 
   def set_game_state
-    @new_state ||= Gamestate.new
-    sanitize!(@new_state)
+    @game_state = Gamestate.find(params[:id])
   end
 
   # def game_state_params

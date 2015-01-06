@@ -1,0 +1,19 @@
+h1 Listing gamestates
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @gamestates.each do |gamestate|
+      tr
+        td = link_to 'Show', gamestate
+        td = link_to 'Edit', edit_gamestate_path(gamestate)
+        td = link_to 'Destroy', gamestate, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Gamestate', new_gamestate_path
