@@ -16,6 +16,15 @@ class GameController < ApplicationController
     state.my_deck = [1, 1, 1, 2, 2, 2, 2, 2, 2, 2]
     state.discard = []
     state.turn_phase = 0
+
+    state.my_deck.shuffle!
+    deal_starting_hand(state)
+  end
+
+  def deal_starting_hand(state)
+    5.times do |card|
+      state.hand << state.my_deck.shift
+    end
   end
 
   # def game_state_params
