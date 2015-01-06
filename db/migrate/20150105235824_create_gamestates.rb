@@ -11,6 +11,7 @@ class CreateGamestates < ActiveRecord::Migration
       t.text :my_deck
       t.text :discard
       t.integer :turn_phase
+      t.integer :turns
       t.timestamps null: false
     end
   end

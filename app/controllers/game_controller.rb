@@ -26,6 +26,7 @@ class GameController < ApplicationController
     state.my_deck = "1 1 1 2 2 2 2 2 2 2"
     state.discard = ""
     state.turn_phase = 0
+    state.turns = 0
 
     deal_starting_hand(state)
   end

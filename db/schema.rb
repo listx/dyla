@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150105235824) do
     t.text     "my_deck"
     t.text     "discard"
     t.integer  "turn_phase"
+    t.integer  "turns"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
