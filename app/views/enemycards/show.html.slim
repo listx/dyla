@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @enemycard.name
+p
+  strong Damage:
+  = @enemycard.damage
+p
+  strong Hp:
+  = @enemycard.hp
+p
+  strong Vp:
+  = @enemycard.vp
+p
+  strong Tp:
+  = @enemycard.tp
+p
+  strong Description:
+  = @enemycard.description
+
+= link_to 'Edit', edit_enemycard_path(@enemycard)
+'|
+= link_to 'Back', enemycards_path

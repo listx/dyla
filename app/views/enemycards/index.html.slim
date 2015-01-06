@@ -1,0 +1,31 @@
+h1 Listing enemycards
+
+table
+  thead
+    tr
+      th Name
+      th Damage
+      th Hp
+      th Vp
+      th Tp
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @enemycards.each do |enemycard|
+      tr
+        td = enemycard.name
+        td = enemycard.damage
+        td = enemycard.hp
+        td = enemycard.vp
+        td = enemycard.tp
+        td = enemycard.description
+        td = link_to 'Show', enemycard
+        td = link_to 'Edit', edit_enemycard_path(enemycard)
+        td = link_to 'Destroy', enemycard, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Enemycard', new_enemycard_path
