@@ -1,0 +1,2 @@
+module EnemycardsHelper
+end
