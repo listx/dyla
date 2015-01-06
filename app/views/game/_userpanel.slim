@@ -1,3 +1,7 @@
+p this is a partial
+
+#infobar
+p infobar!!!
 p
   ' victory points
   = @new_state.victory_points
@@ -8,22 +12,21 @@ p
   ' hit points
   = @new_state.hit_points
 p
-  ' enemy deck
-  = @new_state.enemy_deck
+  ' turn phase
+  = @new_state.turn_phase
 p
-  ' hand
-  = @new_state.hand
+  ' turns
+  = @new_state.turns
+#playerdeckdiscard
+p player's deck and discards!!!
 p
   ' my deck
   = @new_state.my_deck
 p
   ' discard
   = str_to_arr(@new_state.discard).empty? ? "empty" : @new_state.discard
+#playerhand
+p player's hand!!!
 p
-  ' turn phase
-  = @new_state.turn_phase
-p
-  ' turns
-  = @new_state.turns
-
-= render 'game/userpanel'
+  ' hand
+  = @new_state.hand
