@@ -1,0 +1,2 @@
+module TacticscardsHelper
+end

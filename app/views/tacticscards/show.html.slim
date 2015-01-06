@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @tacticscard.name
+p
+  strong Cost:
+  = @tacticscard.cost
+p
+  strong Description:
+  = @tacticscard.description
+
+= link_to 'Edit', edit_tacticscard_path(@tacticscard)
+'|
+= link_to 'Back', tacticscards_path

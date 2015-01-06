@@ -1,0 +1,18 @@
+= form_for @tacticscard do |f|
+  - if @tacticscard.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@tacticscard.errors.count, "error")} prohibited this tacticscard from being saved:"
+      ul
+        - @tacticscard.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :cost
+    = f.number_field :cost
+  .field
+    = f.label :description
+    = f.text_area :description
+  .actions = f.submit

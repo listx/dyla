@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tacticscards
+
   resources :attackcards
 
   resources :enemycards

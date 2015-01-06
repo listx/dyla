@@ -1,0 +1,25 @@
+h1 Listing tacticscards
+
+table
+  thead
+    tr
+      th Name
+      th Cost
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @tacticscards.each do |tacticscard|
+      tr
+        td = tacticscard.name
+        td = tacticscard.cost
+        td = tacticscard.description
+        td = link_to 'Show', tacticscard
+        td = link_to 'Edit', edit_tacticscard_path(tacticscard)
+        td = link_to 'Destroy', tacticscard, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Tacticscard', new_tacticscard_path
