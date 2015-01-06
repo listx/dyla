@@ -31,8 +31,9 @@ class GameController < ApplicationController
     deal_starting_hand(state)
   end
 
+  #shuffle takes a seed for rng
   def deal_starting_hand(state)
-    deck_arr = str_to_arr(state.my_deck).shuffle!
+    deck_arr = str_to_arr(state.my_deck).shuffle!(random: Random.new(1))
     5.times do |card|
       state.hand += " " + deck_arr.shift.to_s
     end
