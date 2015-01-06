@@ -1,29 +1,4 @@
-p
-  ' victory points
-  = @new_state.victory_points
-p
-  ' tech points
-  = @new_state.tech_points
-p
-  ' hit points
-  = @new_state.hit_points
-p
-  ' enemy deck
-  = @new_state.enemy_deck
-p
-  ' hand
-  = @new_state.hand
-p
-  ' my deck
-  = @new_state.my_deck
-p
-  ' discard
-  = str_to_arr(@new_state.discard).empty? ? "empty" : @new_state.discard
-p
-  ' turn phase
-  = @new_state.turn_phase
-p
-  ' turns
-  = @new_state.turns
-
-= render 'game/userpanel'
+#enemypanel
+  = render 'game/enemypanel'
+#userpanel
+  = render 'game/userpanel'
