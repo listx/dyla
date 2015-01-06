@@ -4,31 +4,31 @@ p this is a partial
   p infobar!!!
   p
     ' victory points
-    = @game_state.victory_points
+    = @gamestate.victory_points
   p
     ' tech points
-    = @game_state.tech_points
+    = @gamestate.tech_points
   p
     ' hit points
-    = @game_state.hit_points
+    = @gamestate.hit_points
   p
     ' turn phase
-    = @game_state.turn_phase
+    = @gamestate.turn_phase
   p
     ' turns
-    = @game_state.turns
+    = @gamestate.turns
 #playerdeckdiscard
   p player's deck and discards!!!
   p
     ' my deck
-    = @game_state.my_deck
+    = @gamestate.my_deck
   p
     ' discard
-    = str_to_arr(@game_state.discard).empty? ? "empty" : @game_state.discard
+    = str_to_arr(@gamestate.discard).empty? ? "empty" : @gamestate.discard
 #playerhand
   p player's hand!!!
   p
     ' hand
-    = @game_state.hand
-  = form_for @game_state do |f|
+    = @gamestate.hand
+  = form_for @gamestate do |f|
     .actions = f.submit 'Done'
