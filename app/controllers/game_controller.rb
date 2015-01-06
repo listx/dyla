@@ -1,7 +1,9 @@
 class GameController < ApplicationController
+  include GameHelper
+
+  before_action :set_game_state, only: [:create, :battle]
+
   def create
-    @new_state = Gamestate.new
-    @new_state = sanitize(@new_state)
     redirect_to battle_path
   end
 
@@ -15,7 +17,7 @@ class GameController < ApplicationController
 
   private
 
-  def sanitize(state)
+  def sanitize!(state)
     state.victory_points = 0
     state.tech_points = 0
     state.hit_points = 10
@@ -25,23 +27,20 @@ class GameController < ApplicationController
     state.discard = ""
     state.turn_phase = 0
 
-    state.my_deck = str_to_arr(state.my_deck)
     deal_starting_hand(state)
   end
 
-  # takes "1 2 3 4" turns into [1,2,3,4]
-  def str_to_arr(string)
-    arr_of_strings = string.split(" ")
-    arr_of_strings.map! do |element|
-      element.to_i
+  def deal_starting_hand(state)
+    deck_arr = str_to_arr(state.my_deck).shuffle!
+    5.times do |card|
+      state.hand += " " + deck_arr.shift.to_s
     end
+    state.my_deck = arr_to_str(deck_arr)
   end
 
-  def deal_starting_hand(state)
-    deck_arr = str_to_arr(state.my_deck)
-    5.times do |card|
-      state.hand << deck_arr.shift
-    end
+  def set_game_state
+    @new_state ||= Gamestate.new
+    sanitize!(@new_state)
   end
 
   # def game_state_params
