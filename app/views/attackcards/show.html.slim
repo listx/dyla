@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @attackcard.name
+p
+  strong Cost:
+  = @attackcard.cost
+p
+  strong Damage:
+  = @attackcard.damage
+p
+  strong Description:
+  = @attackcard.description
+
+= link_to 'Edit', edit_attackcard_path(@attackcard)
+'|
+= link_to 'Back', attackcards_path

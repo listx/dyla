@@ -1,0 +1,27 @@
+h1 Listing attackcards
+
+table
+  thead
+    tr
+      th Name
+      th Cost
+      th Damage
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @attackcards.each do |attackcard|
+      tr
+        td = attackcard.name
+        td = attackcard.cost
+        td = attackcard.damage
+        td = attackcard.description
+        td = link_to 'Show', attackcard
+        td = link_to 'Edit', edit_attackcard_path(attackcard)
+        td = link_to 'Destroy', attackcard, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Attackcard', new_attackcard_path

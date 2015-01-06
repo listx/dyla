@@ -1,0 +1,21 @@
+= form_for @attackcard do |f|
+  - if @attackcard.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@attackcard.errors.count, "error")} prohibited this attackcard from being saved:"
+      ul
+        - @attackcard.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :cost
+    = f.number_field :cost
+  .field
+    = f.label :damage
+    = f.number_field :damage
+  .field
+    = f.label :description
+    = f.text_area :description
+  .actions = f.submit
