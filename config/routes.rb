@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get 'creategame' => 'game#create'
   get 'gamerules' => 'game#rules'
+  get 'battle' => 'game#battle'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

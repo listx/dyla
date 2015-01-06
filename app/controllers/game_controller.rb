@@ -2,6 +2,11 @@ class GameController < ApplicationController
   def create
     @new_state = Gamestate.new
     @new_state = sanitize(@new_state)
+    redirect_to battle_path
+  end
+
+  def battle
+
   end
 
   def rules
