@@ -4,6 +4,9 @@ class GameController < ApplicationController
     @new_state = sanitize(@new_state)
   end
 
+  def rules
+
+  end
 
   private
 
