@@ -5,5 +5,7 @@
       ul
         - @gamestate.errors.full_messages.each do |message|
           li = message
+  .field
+    = f.hidden_field :turns
 
   .actions = f.submit

@@ -30,5 +30,5 @@ p this is a partial
   p
     ' hand
     = @gamestate.hand
-  = form_for @gamestate do |f|
-    .actions = f.submit 'Done'
+
+  = render 'form'
