@@ -1,11 +1,29 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#To add new Enemy, Attack, or Tactics cards, add the entry at the end of each corresponding array for the card type.
 
-Enemycard.create(name: 'enemy card name', damage: 5, hp: 345, vp: 234, tp: 3, description: 'aiwueghiawefihffwihawie')
-Attackcard.create(name: 'attack card name', cost: 5456, damage: 2342342, description: 'aiwueghiawefihffwihawie')
-Tacticscard.create(name: 'tactics card name', cost: 5, description: 'aiwueghiawefihffwihawie')
+ECardName = ['Drake class', 'Nelson class', 'Agamemnon class']
+ECardDamage = [2,3,3]
+ECardHp = [5,7,11]
+ECardVp = [0,1,2]
+ECardTp = [1,2,4]
+ECardDesc = ['light escort','heavy escort','carrier']
+
+ACardName = ['Igelstellung','Valiant','Lohengrin']
+ACardCost = [0,6,15]
+ACardDamage = [1,4,9]
+ACardDesc = ['CIWS', 'linear cannon', 'positron cannon']
+
+TCardName = ['Smoke dispensers','Antibeam depth charge','Emergency repairs']
+TCardCost = [2,2,3]
+TCardDesc = ['-2 to damage taken this turn','-3 to damage dealt and taken this turn','regain 1 hp']
+
+ECardName.length.times do |cardnum|
+  Enemycard.create(name: ECardName[cardnum], damage: ECardDamage[cardnum], hp: ECardHp[cardnum], vp: ECardVp[cardnum], tp: ECardTp[cardnum], description: ECardDesc[cardnum])
+end
+
+ACardName.length.times do |cardnum|
+  Attackcard.create(name: ACardName[cardnum], cost: ACardCost[cardnum], damage: ACardDamage[cardnum],description: ACardDesc[cardnum])
+end
+
+TCardName.length.times do |cardnum|
+  Tacticscard.create(name: TCardName[cardnum], cost: TCardCost[cardnum], description: TCardDesc[cardnum])
+end
