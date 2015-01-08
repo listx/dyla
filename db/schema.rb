@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150106052629) do
   end
 
   create_table "enemycards", force: :cascade do |t|
+    t.integer  "lvl"
     t.string   "name"
     t.integer  "damage"
     t.integer  "hp"

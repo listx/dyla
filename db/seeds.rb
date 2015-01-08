@@ -1,43 +1,76 @@
-#To add new Enemy, Attack, or Tactics cards, add the entry at the end of each corresponding array for the card type.
+#-------card definitions----------
+enemycardslvl1 = [
+{name: 'Moebius MA squadron', hp: 4, damage: 2, tp: 1, vp: 0, desc: 'mobile armors'},
+{name: 'Drake class', hp: 5, damage: 2, tp: 1, vp: 0, desc: 'light escort'},
+{name: 'Nelson class', hp: 7, damage: 3, tp: 2, vp: 1, desc: 'heavy escort'},
+{name: 'Agamemnon class', hp: 11, damage: 3, tp: 4, vp: 2, desc: 'carrier'}
+]
 
-ECardName = ['Drake class', 'Nelson class', 'Agamemnon class']
-ECardDamage = [2,3,3]
-ECardHp = [5,7,11]
-ECardVp = [0,1,2]
-ECardTp = [1,2,4]
-ECardDesc = ['light escort','heavy escort','carrier']
+enemycardslvl2 = [
+{name: 'GINN squadron', hp: 8, damage: 3, tp: 2, vp: 0, desc: 'mobile suits'},
+{name: 'GINN/CGUE squadron', hp: 11, damage: 4, tp: 3, vp: 0, desc: 'elite mobile suits'},
+{name: 'Laurasia class', hp: 9, damage: 4, tp: 2, vp: 1, desc: 'assault carrier'},
+{name: 'Nazca class', hp: 12, damage: 4, tp: 4, vp: 1, desc: 'fast carrier'}
+]
 
-ACardName = ['Igelstellung','Valiant','Lohengrin']
-ACardCost = [0,6,15]
-ACardDamage = [1,4,9]
-ACardDesc = ['CIWS', 'linear cannon', 'positron cannon']
+enemycardslvl3 = [
+{name: 'Strike Dagger squadron', hp: 14, damage: 3, tp: 2, vp: 0, desc: 'mobile suits'},
+{name: 'GUAIZ squadron', hp: 14, damage: 4, tp: 3, vp: 0, desc: 'mobile suits'},
+{name: 'Nazca Fleet', hp: 16, damage: 5, tp: 3, vp: 1, desc: 'lots of ships'},
+{name: 'Vesalius', hp: 14, damage: 4, tp: 2, vp: 1, desc: 'elite Nazca class'},
+{name: 'Dominion', hp: 15, damage: 5, tp: 4, vp: 1, desc: 'new model assault carrier'},
+{name: 'Peacemaker Fleet', hp: 20, damage: 9, tp: 6, vp: 2, desc: 'nuclear forces'}
+]
 
-TCardName = ['Smoke dispensers','Antibeam depth charge','Emergency repairs']
-TCardCost = [2,2,3]
-TCardDesc = ['-2 to damage taken this turn','-3 to damage dealt and taken this turn','regain 1 hp']
+attackcards = [
+{name: 'Igelstellung 1', cost: 0, damage: 1, desc: 'CIWS point defense'},
+{name: 'Igelstellung 2', cost: 2, damage: 2, desc: 'upgraded CIWS'},
+{name: 'Helldart', cost: 4, damage: 3, desc: 'rapid fire short range missiles'},
+{name: 'Valiant Mk.8', cost: 6, damage: 4, desc: 'linear cannon'},
+{name: 'Gottfried Mk.71', cost: 8, damage: 5, desc: 'anti-ship laser cannon'},
+{name: 'Heavy Missile Tubes', cost: 10, damage: 6, desc: 'multipurpose missiles'},
+{name: 'Lohengrin', cost: 15, damage: 9, desc: 'positron cannon'}
+]
 
-ECardName.length.times do |cardnum|
-  Enemycard.create(name: ECardName[cardnum], damage: ECardDamage[cardnum], hp: ECardHp[cardnum], vp: ECardVp[cardnum], tp: ECardTp[cardnum], description: ECardDesc[cardnum])
+tacticscards = [
+{name: 'Evade', cost: 0, desc: 'damage taken -1'},
+{name: 'Smoke Dispensers', cost: 2, desc: 'damage taken -2'},
+{name: 'Antibeam depth charge', cost: 2, desc: 'damage dealt -3, damage taken -3'},
+{name: 'Emergency repairs', cost: 3, desc: '+1 hp'},
+{name: 'Scavenge supplies', cost: 3, desc: '+1 tp'},
+{name: 'Targeting computers', cost: 4, desc: 'damage dealt +1 for each attack card played'}
+]
+
+#-------end card definitions------
+
+def genEnemies(cards_arr, level)
+  cards_arr.each do |cardhash|
+    Enemycard.create(
+      lvl: level,
+      name: cardhash[:name],
+      hp: cardhash[:hp],
+      damage: cardhash[:damage],
+      tp: cardhash[:tp],
+      vp: cardhash[:vp],
+      description: cardhash[:desc])
+  end
 end
 
-ACardName.length.times do |cardnum|
-  Attackcard.create(name: ACardName[cardnum], cost: ACardCost[cardnum], damage: ACardDamage[cardnum],description: ACardDesc[cardnum])
+genEnemies(enemycardslvl1, 1)
+genEnemies(enemycardslvl2, 2)
+genEnemies(enemycardslvl3, 3)
+
+attackcards.each do |cardhash|
+  Attackcard.create(
+    name: cardhash[:name],
+    cost: cardhash[:cost],
+    damage: cardhash[:damage],
+    description: cardhash[:desc])
 end
 
-TCardName.length.times do |cardnum|
-  Tacticscard.create(name: TCardName[cardnum], cost: TCardCost[cardnum], description: TCardDesc[cardnum])
+tacticscards.each do |cardhash|
+  Tacticscard.create(
+    name: cardhash[:name],
+    cost: cardhash[:cost],
+    description: cardhash[:desc])
 end
-
-# redo format for seeds. 3 arrays of hashes for each card type, like this:
-# enemycardshashesarray = [
-# {name: 'aefawa', damage: 5, vp: 2, etc...},
-# {card2 hash},
-# {card3 hash}
-# ]
-
-# enemycardshashesarray.each do |hash|
-#   Enemycard.create(
-#     name: hash['name'],
-#     damage: hash['damage'], etc...
-#     )
-# end

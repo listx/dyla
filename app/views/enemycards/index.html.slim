@@ -3,6 +3,7 @@ h1 Listing enemycards
 table
   thead
     tr
+      th Lvl
       th Name
       th Damage
       th Hp
@@ -16,6 +17,7 @@ table
   tbody
     - @enemycards.each do |enemycard|
       tr
+        td = enemycard.lvl
         td = enemycard.name
         td = enemycard.damage
         td = enemycard.hp
