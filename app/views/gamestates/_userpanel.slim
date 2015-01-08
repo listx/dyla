@@ -1,34 +1,26 @@
-p this is a partial
-
 #infobar
-  p infobar!!!
   p
-    ' victory points
+    ' VP
     = @gamestate.victory_points
-  p
-    ' tech points
+    '  TP
     = @gamestate.tech_points
-  p
-    ' hit points
+    '  HP
     = @gamestate.hit_points
-  p
-    ' turn phase
+    '  Turn phase
     = @gamestate.turn_phase
-  p
-    ' turns
+    '  Turns
     = @gamestate.turns
+
 #playerdeckdiscard
-  p player's deck and discards!!!
   p
-    ' my deck
+    ' Player library deck
     = @gamestate.my_deck
   p
-    ' discard
-    = str_to_arr(@gamestate.discard).empty? ? "empty" : @gamestate.discard
-#playerhand
-  p player's hand!!!
-  p
-    ' hand
-    = @gamestate.hand
+    ' Player discard deck
+    = str_to_arr(@gamestate.discard).empty? ? "Empty" : @gamestate.discard
 
+#playerhand
+  p
+    ' Player hand
+    = @gamestate.hand
   = render 'form'
