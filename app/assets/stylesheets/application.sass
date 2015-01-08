@@ -1,16 +1,68 @@
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import "rails_bootstrap_forms"
+@import "font-awesome-sprockets"
+@import "font-awesome"
+
+// From https://color.adobe.com/Campfire-color-theme-2528696/
+$c1: #588c7e
+$c2: #f2e394
+$c3: #f2ae72
+$c4: #d96459
+$c5: #8c4646
+$footer-height: 3.5em
+
 html
   body
-    #enemypanel
-      #enemypicture
-        background-color: #ff00ff
-      #enemystats
-        background-color: #00ffff
-      #enemydecks
-        background-color: #ffff00
-    #userpanel
-      #infobar
-        background-color: #ff0000
-      #playerdeckdiscard
-        background-color: #00ff00
-      #playerhand
-        background-color: #0000ff
+    section
+      .container-fluid
+        .row
+          margin: 0 auto
+          margin-top: 60px
+          .root-menu
+            margin: 0 auto
+            width: 10em
+            text-align: center
+            font-size: 2em
+            a
+              color: black
+            #new-game
+              background-color: $c1
+            #game-rules
+              background-color: $c2
+            #game-database
+              padding-top: 1em
+              #enemy-cards
+                background-color: $c3
+              #attack-cards
+                background-color: $c4
+              #tactics-cards
+                background-color: $c5
+          #enemypanel
+            #enemypicture
+              background-color: #ff00ff
+            #enemystats
+              background-color: #00ffff
+            #enemydecks
+              background-color: #ffff00
+          #userpanel
+            #infobar
+              background-color: #ff0000
+            #playerdeckdiscard
+              background-color: #00ff00
+            #playerhand
+              background-color: #0000ff
+    .footer
+      margin-top: 1em
+      text-align: center
+      position: fixed
+      bottom: 0
+      width: 100%
+      height: $footer-height
+      background-color: $c3
+      .container
+        .text-muted
+          margin: 1em 0
+          text-align: center
+          a
+            color: black

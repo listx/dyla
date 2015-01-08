@@ -1,10 +1,14 @@
-.root_menu
-  = link_to "New Game", new_gamestate_path
-  br
-  = link_to "Game Rules", rules_path
-  br
-  = link_to "Enemy cards", enemycards_path
-  br
-  = link_to "Attack cards", attackcards_path
-  br
-  = link_to "Tactics cards", tacticscards_path
+.root-menu
+  ' Game Menu
+  #new-game
+    = link_to "New Game", new_gamestate_path
+  #game-rules
+    = link_to "Game Rules", rules_path
+  #game-database
+    ' Card Database
+    #enemy-cards
+      = link_to "Enemy cards", enemycards_path
+    #attack-cards
+      = link_to "Attack cards", attackcards_path
+    #tactics-cards
+      = link_to "Tactics cards", tacticscards_path

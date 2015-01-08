@@ -6,7 +6,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    == yield
-br
-= link_to 'Home',
-root_path
+    section
+      .container-fluid
+        .row
+          = render 'layouts/content'
+    = render 'layouts/footer'
