@@ -6,6 +6,8 @@
 - create start page, "start, game rules", basic login
 - game controller
 
+- for dan: fix seed file into new format
+
 forms:
 - player hand
 - shop

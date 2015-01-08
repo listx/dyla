@@ -27,3 +27,17 @@ end
 TCardName.length.times do |cardnum|
   Tacticscard.create(name: TCardName[cardnum], cost: TCardCost[cardnum], description: TCardDesc[cardnum])
 end
+
+# redo format for seeds. 3 arrays of hashes for each card type, like this:
+# enemycardshashesarray = [
+# {name: 'aefawa', damage: 5, vp: 2, etc...},
+# {card2 hash},
+# {card3 hash}
+# ]
+
+# enemycardshashesarray.each do |hash|
+#   Enemycard.create(
+#     name: hash['name'],
+#     damage: hash['damage'], etc...
+#     )
+# end
