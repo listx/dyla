@@ -11,13 +11,11 @@ class GamestatesController < ApplicationController
   # GET /gamestates/1
   # GET /gamestates/1.json
   def show
-    @enemycards1 = Enemycard.where(lvl: 1)
-    @enemycards2 = Enemycard.where(lvl: 2)
-    @enemycards3 = Enemycard.where(lvl: 3)
-    @attackcards = Attackcard.all
-    @tacticscards = Tacticscard.all
-    @jsontest = Tacticscard.all.to_json
-    p @jsontest
+    @enemycards1 = Enemycard.where(lvl: 1).to_json
+    @enemycards2 = Enemycard.where(lvl: 2).to_json
+    @enemycards3 = Enemycard.where(lvl: 3).to_json
+    @attackcards = Attackcard.all.to_json
+    @tacticscards = Tacticscard.all.to_json
   end
 
   # GET /gamestates/new

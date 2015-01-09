@@ -13,23 +13,11 @@
 
 #attackcardsreference
   p reference of all attack cards
-  table
-    - @attackcards.each do |card|
-      tr
-        td.name = card.name
-        td.cost = card.cost
-        td.damage = card.damage
-        td.desc = card.description
+  = @attackcards
 
 #tacticscardsreference
   p reference of all tactics cards
-  = @jsontest
-  table
-    - @tacticscards.each do |card|
-      tr
-        td.name = card.name
-        td.cost = card.cost
-        td.desc = card.description
+  = @tacticscards
 
 #playerdeckdiscard
   p

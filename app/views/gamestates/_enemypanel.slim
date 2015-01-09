@@ -11,33 +11,10 @@
       = @gamestate.enemy_deck
   #enemycardsreference
     p reference of all enemy level 1 cards
-    table
-      - @enemycards1.each do |card|
-        tr
-          td.name = card.name
-          td.damage = card.damage
-          td.hp = card.hp
-          td.vp = card.vp
-          td.tp = card.tp
-          td.desc = card.description
+    = @enemycards1
 
     p reference of all enemy level 2 cards
-    table
-      - @enemycards2.each do |card|
-        tr
-          td.name = card.name
-          td.damage = card.damage
-          td.hp = card.hp
-          td.vp = card.vp
-          td.tp = card.tp
-          td.desc = card.description
+    = @enemycards2
+
     p reference of all enemy level 3 cards
-    table
-      - @enemycards3.each do |card|
-        tr
-          td.name = card.name
-          td.damage = card.damage
-          td.hp = card.hp
-          td.vp = card.vp
-          td.tp = card.tp
-          td.desc = card.description
+    = @enemycards3
