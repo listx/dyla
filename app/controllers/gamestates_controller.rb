@@ -11,6 +11,11 @@ class GamestatesController < ApplicationController
   # GET /gamestates/1
   # GET /gamestates/1.json
   def show
+    @enemycards1 = Enemycard.where(lvl: 1)
+    @enemycards2 = Enemycard.where(lvl: 2)
+    @enemycards3 = Enemycard.where(lvl: 3)
+    @attackcards = Attackcard.all
+    @tacticscards = Tacticscard.all
   end
 
   # GET /gamestates/new
