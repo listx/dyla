@@ -16,6 +16,8 @@ class GamestatesController < ApplicationController
     @enemycards3 = Enemycard.where(lvl: 3)
     @attackcards = Attackcard.all
     @tacticscards = Tacticscard.all
+    @jsontest = Tacticscard.all.to_json
+    p @jsontest
   end
 
   # GET /gamestates/new
