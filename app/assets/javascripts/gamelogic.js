@@ -77,7 +77,7 @@ $(document).ready(function() {
   }
 
   function showEnemy(card){
-    $('#enemypicture').append("<p>"+card.name+"</p>");
+    $('#enemypicture').append("<p>A picture of "+card.name+" goes here</p>");
     $('#enemystats').append("<div class='enemycard'>name:"+card.name+"<br>hp:"+card.hp+"<br>damage:"+card.damage+"<br>tech points:"+card.tp+"<br>victory points:"+card.vp+"<br>text:"+card.description+"</div>");
   }
 
@@ -89,6 +89,8 @@ $(document).ready(function() {
       playerHand.push(start.shift());
     }
     playerDeck = start;
+
+    showPlayer();
   }
 
   function shuffle(array) {
@@ -107,6 +109,25 @@ $(document).ready(function() {
       array[randomIndex] = temporaryValue;
       }
       return array;
+  }
+
+  function showPlayer(){
+    for (i = 0; i < playerHand.length; i++) {
+      if (playerHand[i].hasOwnProperty('damage')){
+        showAttackCard(playerHand[i]);
+      }
+      else {
+        showTacticsCard(playerHand[i]);
+      }
+    }
+  }
+
+  function showAttackCard(card){
+    $('#playerhand').append("<div class='playercard'>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
+  }
+
+  function showTacticsCard(card){
+    $('#playerhand').append("<div class='playercard'>name:"+card.name+"<br>text:"+card.description+"</div>");
   }
 
   function drawCard(){
