@@ -1,22 +1,16 @@
 $(document).ready(function() {
-  $('#enemy-cards').on('click', testFunc);
-  $('#enemypicture').ready(setupCards);
-
-  function setupCards(e) {
-    var enemycards = $.ajax({
-      url: '/gamestates/1'
-    })
-    .done(function(response) {
-      console.log('success');
-      //need to get expected jsons and do something with them
-    })
-    .fail(function(event) {
-      console.log('You FAILED!!!');
-    })
-  }
+  $('#enemypicture').on('click', testFunc);
 
   function testFunc() {
     console.log('successful test');
+    $('#enemycardsreference').append("hi"+enemycards1list[1].name+" there");
   }
 
+  var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
+  console.log(enemycards1list);
+  var enemycards2list = $.parseJSON($('#ec2').attr('datastuff'))
+  var enemycards3list = $.parseJSON($('#ec3').attr('datastuff'))
+
+  var attackcardslist = $.parseJSON($('#ac').attr('datastuff'))
+  var tacticscardslist = $.parseJSON($('#tc').attr('datastuff'))
 });

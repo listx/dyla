@@ -11,10 +11,10 @@
       = @gamestate.enemy_deck
   #enemycardsreference
     p reference of all enemy level 1 cards
-    = @enemycards1
+    #ec1 datastuff="#{@enemycards1.to_json}"
 
     p reference of all enemy level 2 cards
-    = @enemycards2
+    #ec2 datastuff="#{@enemycards2.to_json}"
 
     p reference of all enemy level 3 cards
-    = @enemycards3
+    #ec3 datastuff="#{@enemycards3.to_json}"
