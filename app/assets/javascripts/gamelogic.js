@@ -123,11 +123,11 @@ $(document).ready(function() {
   }
 
   function showAttackCard(card){
-    $('#playerhand').append("<div class='playercard'>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
+    $('#playerhand').append("<div class='playercard'>image here<br>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
   }
 
   function showTacticsCard(card){
-    $('#playerhand').append("<div class='playercard'>name:"+card.name+"<br>text:"+card.description+"</div>");
+    $('#playerhand').append("<div class='playercard'>image here<br>name:"+card.name+"<br>text:"+card.description+"</div>");
   }
 
   function drawCard(){
