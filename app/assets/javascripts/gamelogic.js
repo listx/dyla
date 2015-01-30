@@ -1,6 +1,7 @@
 $(document).ready(function() {
-  $('#enemypicture').on('click', playerSetup);
-  $('#enemypicture').on('click', enemySetup);
+  $('.startnew').on('click', playerSetup);
+  $('.startnew').on('click', enemySetup);
+  $('#playerhand').on('click', '.playercard', selectCardtoPlay);
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
   console.log(enemycards1list);
@@ -123,11 +124,16 @@ $(document).ready(function() {
   }
 
   function showAttackCard(card){
-    $('#playerhand').append("<div class='playercard'>image here<br>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
+    $('#playerhand').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
   }
 
   function showTacticsCard(card){
-    $('#playerhand').append("<div class='playercard'>image here<br>name:"+card.name+"<br>text:"+card.description+"</div>");
+    $('#playerhand').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>text:"+card.description+"</div>");
+  }
+
+  function selectCardtoPlay(){
+    $(this).attr('class', 'playercard play')
+    console.log(this);
   }
 
   function drawCard(){
