@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('.startnew').on('click', playerSetup);
   $('.startnew').on('click', enemySetup);
-  $('#playerhand').on('click', '.playercard', selectCardtoPlay);
+  $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', playSelectedCards);
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
@@ -13,6 +13,7 @@ $(document).ready(function() {
 
   var playerDeck = [];
   var playerHand = [];
+  var playerDiscard = [];
   var enemyDeck1 = [];
   var enemyDeck2 = [];
   var enemyDeck3 = [];
@@ -124,21 +125,30 @@ $(document).ready(function() {
   }
 
   function showAttackCard(card){
-    $('#playerhand').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
   }
 
   function showTacticsCard(card){
-    $('#playerhand').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>text:"+card.description+"</div>");
   }
 
   function selectCardtoPlay(){
     $(this).attr('class', 'playercard play')
     console.log(this);
-    console.log(playerHand);
   }
 
   function playSelectedCards(){
-
+    var idx = 0;
+    while (idx < 8) {
+      if($( "div#playersCards div:nth-child("+idx+")" ).attr('class') === 'playercard play'){
+        $( "div#playersCards div:nth-child("+idx+")" ).remove();
+        var moveToDiscard = playerHand.splice(i - 1,1);
+        playerDiscard.push(moveToDiscard[0]);
+      }
+      else {
+        idx++;
+      }
+    }
   }
 
   function drawCard(){
