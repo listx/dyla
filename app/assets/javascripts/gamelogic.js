@@ -2,9 +2,9 @@ $(document).ready(function() {
   $('.startnew').on('click', playerSetup);
   $('.startnew').on('click', enemySetup);
   $('#playerhand').on('click', '.playercard', selectCardtoPlay);
+  $('.playselected').on('click', playSelectedCards);
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
-  console.log(enemycards1list);
   var enemycards2list = $.parseJSON($('#ec2').attr('datastuff'))
   var enemycards3list = $.parseJSON($('#ec3').attr('datastuff'))
 
@@ -134,9 +134,18 @@ $(document).ready(function() {
   function selectCardtoPlay(){
     $(this).attr('class', 'playercard play')
     console.log(this);
+    console.log(playerHand);
+  }
+
+  function playSelectedCards(){
+
   }
 
   function drawCard(){
     playerHand.push(playerDeck.shift());
+  }
+
+  function fromHandtoDiscard(card){
+
   }
 });
