@@ -22,6 +22,7 @@ $(document).ready(function() {
   var turnCounter = 0;
   var maxMessages = 5;
   var maxHandsize = 8;
+  var playingCards = [];
 
   function startSetup(){
     if(turnCounter === 0){
@@ -171,9 +172,11 @@ $(document).ready(function() {
     }
     //wipe html of all played cards
     $('#playersCards div.play').remove()
-    //mark cards in hand to delete
     for(i = 0; i < playTheseCards.length; i++){
-    playerHand[playTheseCards[i]] = 'del'
+      //move copy to playing cards array
+      playingCards.push(playerHand[playTheseCards[i]]);
+      //mark cards in hand to delete
+      playerHand[playTheseCards[i]] = 'del'
     }
     //delete them
     for(i = 0; i < playTheseCards.length; i++){
@@ -181,6 +184,7 @@ $(document).ready(function() {
       playerHand.splice(temp, 1);
     }
     console.log(playerHand);
+    console.log(playingCards);
   }
 
   function printMsg(string) {
