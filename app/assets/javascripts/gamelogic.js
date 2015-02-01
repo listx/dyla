@@ -18,6 +18,7 @@ $(document).ready(function() {
   var enemyDeck3 = [];
   var currentEnemy = "";
   var turnCounter = 0;
+  var maxMessages = 5;
 
   function startSetup(){
     if(turnCounter === 0){
@@ -92,14 +93,19 @@ $(document).ready(function() {
   }
 
   function playerSetup(){
-    var start = [tacticscardslist[0],tacticscardslist[0],tacticscardslist[0],attackcardslist[0],attackcardslist[0],attackcardslist[0],attackcardslist[0],attackcardslist[0],attackcardslist[0],attackcardslist[0]];
+    var start = [];
+    for(i = 0; i < 3; i++) {
+      start.push(tacticscardslist[0]);
+    }
+    for(i = 0; i < 7; i++) {
+      start.push(attackcardslist[0]);
+    }
     shuffle(start);
 
     for (i = 0; i < 5; i++) {
       playerHand.push(start.shift());
     }
     playerDeck = start;
-
     showPlayer();
   }
 
@@ -141,8 +147,12 @@ $(document).ready(function() {
   }
 
   function selectCardtoPlay(){
+    if($(this).attr('class') === 'playercard noplay'){
     $(this).attr('class', 'playercard play')
-    console.log(this);
+    }
+    else {
+      $(this).attr('class', 'playercard noplay')
+    }
   }
 
   function playSelectedCards(){
@@ -161,7 +171,10 @@ $(document).ready(function() {
   }
 
   function printMsg(string) {
-    $('.gamelog').append(string);
+    if($('.gamelog li').length === maxMessages){
+      $('.gamelog li:nth-child(1)').remove();
+    }
+    $('.gamelog ul').append('<li>'+string+'</li>');
   }
 
   function drawCard(){
