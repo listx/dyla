@@ -20,7 +20,7 @@ $(document).ready(function() {
   var enemyDeck3 = [];
   var currentEnemy = "";
   var turnCounter = 0;
-  var maxMessages = 5;
+  var maxMessages = 3;
   var maxHandsize = 8;
   var playingCards = [];
 
@@ -30,6 +30,7 @@ $(document).ready(function() {
       playerSetup();
       turnCounter += 1;
     }
+    $('.startnew').remove();
   }
 
   function enemySetup(){
@@ -166,6 +167,7 @@ $(document).ready(function() {
     while(idx < maxHandsize) {
       if($( "div#playersCards div:nth-child("+idx+")" ).attr('class') === 'playercard play'){
         //save indexes of cards to play
+        printMsg("You have played "+playerHand[idx - 1].name);
         playTheseCards.push(idx - 1);
       }
       idx++;
