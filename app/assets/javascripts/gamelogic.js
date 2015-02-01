@@ -10,6 +10,8 @@ $(document).ready(function() {
   var attackcardslist = $.parseJSON($('#ac').attr('datastuff'))
   var tacticscardslist = $.parseJSON($('#tc').attr('datastuff'))
 
+  var initTacticsCards = 3;
+  var initAttackCards = 7;
   var playerDeck = [];
   var playerHand = [];
   var playerDiscard = [];
@@ -19,6 +21,7 @@ $(document).ready(function() {
   var currentEnemy = "";
   var turnCounter = 0;
   var maxMessages = 5;
+  var maxHandsize = 8;
 
   function startSetup(){
     if(turnCounter === 0){
@@ -94,10 +97,10 @@ $(document).ready(function() {
 
   function playerSetup(){
     var start = [];
-    for(i = 0; i < 3; i++) {
+    for(i = 0; i < initTacticsCards; i++) {
       start.push(tacticscardslist[0]);
     }
-    for(i = 0; i < 7; i++) {
+    for(i = 0; i < initAttackCards; i++) {
       start.push(attackcardslist[0]);
     }
     shuffle(start);
@@ -156,18 +159,28 @@ $(document).ready(function() {
   }
 
   function playSelectedCards(){
+    var playTheseCards = [];
     var idx = 0;
-    while (idx < 8) {
+    // find all cards to play
+    while(idx < maxHandsize) {
       if($( "div#playersCards div:nth-child("+idx+")" ).attr('class') === 'playercard play'){
-        $( "div#playersCards div:nth-child("+idx+")" ).remove();
-        var moveToDiscard = playerHand.splice(i - 1,1);
-        playerDiscard.push(moveToDiscard[0]);
-        printMsg("you have played "+moveToDiscard[0].name);
+        //save indexes of cards to play
+        playTheseCards.push(idx - 1);
       }
-      else {
-        idx++;
-      }
+      idx++;
     }
+    //wipe html of all played cards
+    $('#playersCards div.play').remove()
+    //mark cards in hand to delete
+    for(i = 0; i < playTheseCards.length; i++){
+    playerHand[playTheseCards[i]] = 'del'
+    }
+    //delete them
+    for(i = 0; i < playTheseCards.length; i++){
+      var temp = playerHand.indexOf('del');
+      playerHand.splice(temp, 1);
+    }
+    console.log(playerHand);
   }
 
   function printMsg(string) {
