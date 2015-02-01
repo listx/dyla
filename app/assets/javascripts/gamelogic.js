@@ -1,6 +1,5 @@
 $(document).ready(function() {
-  $('.startnew').on('click', playerSetup);
-  $('.startnew').on('click', enemySetup);
+  $('.startnew').on('click', startSetup);
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', playSelectedCards);
 
@@ -18,6 +17,15 @@ $(document).ready(function() {
   var enemyDeck2 = [];
   var enemyDeck3 = [];
   var currentEnemy = "";
+  var turnCounter = 0;
+
+  function startSetup(){
+    if(turnCounter === 0){
+      enemySetup();
+      playerSetup();
+      turnCounter += 1;
+    }
+  }
 
   function enemySetup(){
     //deck1
@@ -144,11 +152,16 @@ $(document).ready(function() {
         $( "div#playersCards div:nth-child("+idx+")" ).remove();
         var moveToDiscard = playerHand.splice(i - 1,1);
         playerDiscard.push(moveToDiscard[0]);
+        printMsg("you have played "+moveToDiscard[0].name);
       }
       else {
         idx++;
       }
     }
+  }
+
+  function printMsg(string) {
+    $('.gamelog').append(string);
   }
 
   function drawCard(){
