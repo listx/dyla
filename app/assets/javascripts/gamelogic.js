@@ -31,7 +31,7 @@ $(document).ready(function() {
   var enemyDeck3 = [];
   var currentEnemy = "";
   var turnCounter = 0;
-  var maxMessages = 3;
+  var maxMessages = 10;
   var maxHandsize = 5;
   var playingCards = [];
 

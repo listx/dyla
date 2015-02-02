@@ -1,11 +1,26 @@
 p#notice = notice
 button type="button" class="startnew" start new game
-.enemypanel
-  = render 'enemypanel'
+.top
+  .enemypanel
+    = render 'enemypanel'
 
-.gamelog
-  | Game Log
-  ul
+  .gamelog
+    | Game Log
+    ul
+  #infobar
+    table#playerStats
+      tr
+        td Hit Points
+        td.playerhp 10
+      tr
+        td Tech Points
+        td.playertp 0
+      tr
+        td Victory Points
+        td.playervp 0
+      tr
+        td turn
+        td.playerturn 0
 
 .userpanel
   = render 'userpanel'

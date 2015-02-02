@@ -39,16 +39,21 @@ html
               #tactics-cards
                 background-color: $c5
           .enemypanel
+            display: inline-block
+            vertical-align: top
+            height: 350px
+            width: 300px
             .enemy-card
               #enemypicture
+                width: 300px
                 background-color: $c5
               #enemystats
+                width: 300px
                 background-color: $c4
               #enemydecks
+                width: 300px
                 background-color: darken($c4, 15)
           .userpanel
-            #infobar
-              background-color: $c1
             #playerdeckdiscard
               background-color: $c2
             #playerhand
@@ -67,9 +72,25 @@ html
           text-align: center
           a
             color: black
+.top
+  height: 400px
+#rundiv
+  width: 300px
+  background-color: #666666
 
 .gamelog
+  display: inline-block
+  vertical-align: top
+  height: 350px
+  width: 500px
   border: 2px solid black
+
+#infobar
+  background-color: $c1
+  display: inline-block
+  vertical-align: top
+  width: 150px
+  height: 200px
 
 .enemycard
   width: 300px
@@ -82,6 +103,7 @@ html
   height: 150px
   background-color: white
   display: inline-block
+  vertical-align: top
 
 .noplay
   border: 2px solid blue
