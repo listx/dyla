@@ -2,6 +2,9 @@ $(document).ready(function() {
   $('.startnew').on('click', startSetup);
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', playSelectedCards);
+  $('.drawtwo').on('click', function(){
+   drawCards(2);
+  });
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
   var enemycards2list = $.parseJSON($('#ec2').attr('datastuff'))
@@ -132,7 +135,12 @@ $(document).ready(function() {
       return array;
   }
 
+  function clearPlayer(){
+    $('#playersCards').html("");
+  }
+
   function showPlayer(){
+    clearPlayer();
     for (i = 0; i < playerHand.length; i++) {
       if (playerHand[i].hasOwnProperty('damage')){
         showAttackCard(playerHand[i]);
@@ -196,11 +204,12 @@ $(document).ready(function() {
     $('.gamelog ul').append('<li>'+string+'</li>');
   }
 
-  function drawCard(){
-    playerHand.push(playerDeck.shift());
-  }
-
-  function fromHandtoDiscard(card){
-
+  function drawCards(num){
+    for(i = 0; i < num; i++){
+      if(playerHand.length < maxHandsize){
+      playerHand.push(playerDeck.shift());
+      }
+    }
+    showPlayer();
   }
 });
