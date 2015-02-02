@@ -7,8 +7,8 @@
       ' Enemy stats
   #enemydecks
     p
-      ' Enemy deck
-      = @gamestate.enemy_deck
+      ' Enemy threat level
+      span.enemylevel 0
   #enemycardsreference
     #ec1 datastuff="#{@enemycards1.to_json}"
 

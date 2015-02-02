@@ -1,32 +1,31 @@
 #infobar
-  p
-    ' VP
-    = @gamestate.victory_points
-    '  TP
-    = @gamestate.tech_points
-    '  HP
-    = @gamestate.hit_points
-    '  Turn phase
-    = @gamestate.turn_phase
-    '  Turns
-    = @gamestate.turns
+  table#playerStats
+    tr
+      td Hit Points
+      td.playerhp 10
+    tr
+      td Tech Points
+      td.playertp 0
+    tr
+      td Victory Points
+      td.playervp 0
+    tr
+      td turn
+      td.playerturn 0
 
 #ac datastuff="#{@attackcards.to_json}"
-
 #tc datastuff="#{@tacticscards.to_json}"
 
 #playerdeckdiscard
-  p
-    ' Player library deck
-    = @gamestate.my_deck
-  p
-    ' Player discard deck
-    = str_to_arr(@gamestate.discard).empty? ? "Empty" : @gamestate.discard
+  table#deckanddiscard
+    tr
+      td Deck
+      td.deckcount 10
+    tr
+      td Discard
+      td.discardcount 0
 
 #playerhand
-  p
-    ' Player hand
-    = @gamestate.hand
   button type="button" class="refillhand" Refill hand
   button type="button" class="playselected" Play all selected cards
   = render 'form'

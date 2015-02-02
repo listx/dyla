@@ -36,60 +36,42 @@ $(document).ready(function() {
       playerSetup();
       turnCounter += 1;
     }
+    showPlayerStats();
+    showDeckStats();
     $('.startnew').remove();
   }
 
-  function setPlayerStats(){
-    //WORK ON THIS PART, DISPLAYING STATS ON PAGE FROM JS
-    $('#infobar')
+  function showPlayerStats(){
+    $('#infobar .playerhp').html(player.hp);
+    $('#infobar .playertp').html(player.tp);
+    $('#infobar .playervp').html(player.vp);
+    $('#infobar .playerturn').html(turnCounter);
+  }
+
+  function showDeckStats(){
+    $('#deckanddiscard .deckcount').html(playerDeck.length);
+    $('#deckanddiscard .discardcount').html(playerDiscard.length);
   }
 
   function enemySetup(){
-    //deck1
-    for (i = 0; i < 7; i++) {
-      enemyDeck1.push(enemycards1list[0]);
-    }
-    for (i = 0; i < 5; i++) {
-      enemyDeck1.push(enemycards1list[1]);
-    }
-    for (i = 0; i < 5; i++) {
-      enemyDeck1.push(enemycards1list[2]);
-    }
-    for (i = 0; i < 2; i++) {
-      enemyDeck1.push(enemycards1list[3]);
-    }
-    //deck2
-    for (i = 0; i < 7; i++) {
-      enemyDeck2.push(enemycards2list[0]);
-    }
-    for (i = 0; i < 5; i++) {
-      enemyDeck2.push(enemycards2list[1]);
-    }
-    for (i = 0; i < 5; i++) {
-      enemyDeck2.push(enemycards2list[2]);
-    }
-    for (i = 0; i < 2; i++) {
-      enemyDeck2.push(enemycards2list[3]);
-    }
+    // deck 1
+    gatherEnemyCards1(10,0);
+    gatherEnemyCards1(7,1);
+    gatherEnemyCards1(5,2);
+    gatherEnemyCards1(2,3);
+    // deck 2
+    gatherEnemyCards2(10,0);
+    gatherEnemyCards2(7,1);
+    gatherEnemyCards2(5,2);
+    gatherEnemyCards2(2,3);
     //deck 3
-    for (i = 0; i < 7; i++) {
-      enemyDeck3.push(enemycards3list[0]);
-    }
-    for (i = 0; i < 5; i++) {
-      enemyDeck3.push(enemycards3list[1]);
-    }
-    for (i = 0; i < 5; i++) {
-      enemyDeck3.push(enemycards3list[2]);
-    }
-    for (i = 0; i < 1; i++) {
-      enemyDeck3.push(enemycards3list[3]);
-    }
-    for (i = 0; i < 1; i++) {
-      enemyDeck3.push(enemycards3list[4]);
-    }
-    for (i = 0; i < 1; i++) {
-      enemyDeck3.push(enemycards3list[5]);
-    }
+    gatherEnemyCards3(10,0);
+    gatherEnemyCards3(8,1);
+    gatherEnemyCards3(6,2);
+    gatherEnemyCards3(1,3);
+    gatherEnemyCards3(1,4);
+    gatherEnemyCards3(1,5);
+
     shuffle(enemyDeck1);
     shuffle(enemyDeck2);
     shuffle(enemyDeck3);
@@ -99,6 +81,22 @@ $(document).ready(function() {
     showEnemy(currentEnemy);
   }
 
+  function gatherEnemyCards1(num,cardid){
+    for (var i = 0; i < num; i++) {
+      enemyDeck1.push(enemycards1list[cardid]);
+    }
+  }
+  function gatherEnemyCards2(num,cardid){
+    for (var i = 0; i < num; i++) {
+      enemyDeck2.push(enemycards2list[cardid]);
+    }
+  }
+  function gatherEnemyCards3(num,cardid){
+    for (var i = 0; i < num; i++) {
+      enemyDeck3.push(enemycards3list[cardid]);
+    }
+  }
+
   function drawEnemy(deck){
     currentEnemy = deck.shift();
   }
@@ -106,6 +104,7 @@ $(document).ready(function() {
   function showEnemy(card){
     $('#enemypicture').append("<p>A picture of "+card.name+" goes here</p>");
     $('#enemystats').append("<div class='enemycard'>name:"+card.name+"<br>hp:"+card.hp+"<br>damage:"+card.damage+"<br>tech points:"+card.tp+"<br>victory points:"+card.vp+"<br>text:"+card.description+"</div>");
+    $('.enemylevel').html(card.lvl);
   }
 
   function playerSetup(){
@@ -202,6 +201,7 @@ $(document).ready(function() {
       var temp = playerHand.indexOf('del');
       playerHand.splice(temp, 1);
     }
+    showDeckStats();
   }
 
   function printMsg(string) {
@@ -219,11 +219,13 @@ $(document).ready(function() {
       playerHand.push(playerDeck.shift());
     }
     showPlayer();
+    showDeckStats();
   }
 
   function reshuffleDiscard(){
     playerDeck = playerDeck.concat(playerDiscard);
     playerDiscard = [];
+    showDeckStats();
   }
 
   function drawCards(num){
@@ -233,5 +235,6 @@ $(document).ready(function() {
       }
     }
     showPlayer();
+    showDeckStats();
   }
 });
