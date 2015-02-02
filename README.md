@@ -2,17 +2,6 @@
 
 # Todo
 
-- welcome controller
-- create start page, "start, game rules", basic login
-- game controller
-
-- for dan: fix seed file into new format
-
-forms:
-- player hand
-- shop
-- welcome menu?
-
 # Intro
 
 Deckbuilder game in the style of Dominion.
@@ -25,6 +14,7 @@ Basic game progression: Player starts with a deck of 10 'basic' low power cards,
 
 ### Encounter cards
 - name
+- lvl(ranges from 1 to 3 reflecting difficulty)
 - hit points, you must deal this much damage to defeat them.
 - damage, if not defeated at the end of the turn, the enemy will retaliate and inflict this amount of damage.
 - VP, if defeated, you gain this amount of points towards victory.
@@ -57,11 +47,11 @@ Player’s starting deck cards:
 3x basic evade
 
 Player hand:
-Shuffle and draw 5 for the starting hand.
+Shuffle all 10 cards and draw 5 for the starting hand.
 
 Game board:
 Shuffle all 3 encounter decks.  1 Encounter card is active and placed face up from the lvl 1 encounter deck.
-All tech cards are face up and purchasable with no limitations except TechPoints.  The price increases by 1 with each additional copy you buy of the same card.
+All tech cards are face up and purchasable with no limitations except TechPoints.
 
 ## Turn order
 
@@ -71,7 +61,7 @@ All tech cards are face up and purchasable with no limitations except TechPoints
 4. Resolve tactics cards, then resolve damage done by attack cards.
 5. If Encounter card is not defeated, take return damage from the card.
 6. *Research phase*: Chance to purchase tech cards.
-7. *Draw phase*: If 5 or fewer cards in hand, draw up to 5.  Else, nothing happens.  Reshuffle deck if necessary.
+7. *Discard and Draw phase*: Discard any cards you want. If 5 or fewer cards in hand, draw up to 5.  Else, nothing happens.  Reshuffle deck if necessary.
 
 ## Rules details
 
@@ -79,7 +69,7 @@ Victory/lose conditions: Player wins when an arbitrary number of victory points(
 
 Player hit points - The player has a maximum health of 10.
 
-Hand size - Max hand size is 8.  You stop drawing cards from your regular draw phase once you hit 6 cards.  At the beginning of any turn you may skip all of your actions (you WILL take enemy damage though) to discard your hand and redraw up to the amount you held.
+Hand size - Max hand size is 5.  At the end of any turn you may discard any cards and redraw to 5 cards at the discard and draw phase.
 
 Tech cards (buy) - When purchased, they go directly on top of your deck.  If you draw cards at the end of the turn you will immediately draw it and have it for the coming turn.
 
