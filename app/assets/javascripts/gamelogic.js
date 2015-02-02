@@ -126,7 +126,7 @@ $(document).ready(function() {
     $('.enemycard td.dam').html(card.dam);
     $('.enemycard td.tp').html(card.tp);
     $('.enemycard td.vp').html(card.vp);
-    $('.enemycard td.text').html(card.text);
+    $('.enemycard td.text').html(card.description);
     $('.enemylevel').html(card.lvl);
   }
 
