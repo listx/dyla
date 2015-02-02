@@ -4,9 +4,14 @@ $(document).ready(function() {
   $('.playselected').on('click', playSelectedCards);
   $('.refillhand').on('click', fillHand);
   $('.runaway').on('click',function(){
-    drawEnemy();
-    printMsg('You have escaped with minor damage!');
-    loseHp(2);
+    if(player.hp > 2){
+      drawEnemy();
+      printMsg('You have escaped with minor damage!');
+      loseHp(2);
+    }
+    else{
+      printMsg('Too damaged to escape!');
+    }
   });
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
