@@ -121,14 +121,18 @@ $(document).ready(function() {
 
   function showEnemy(card){
     $('#enemypicture').append("<p>A picture of "+card.name+" goes here</p>");
-    $('#enemystats').append("<div class='enemycard'>name:"+card.name+"<br>hp:"+card.hp+"<br>damage:"+card.damage+"<br>tech points:"+card.tp+"<br>victory points:"+card.vp+"<br>text:"+card.description+"</div>");
+    $('.enemycard td.name').html(card.name);
+    $('.enemycard td.hp').html(card.hp);
+    $('.enemycard td.dam').html(card.dam);
+    $('.enemycard td.tp').html(card.tp);
+    $('.enemycard td.vp').html(card.vp);
+    $('.enemycard td.text').html(card.text);
     $('.enemylevel').html(card.lvl);
   }
 
   function clearEnemy(){
     currentEnemy = "";
     $('#enemypicture p:nth-child(2)').remove();
-    $('.enemycard').remove();
   }
 
   function playerSetup(){
