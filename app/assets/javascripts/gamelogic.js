@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('.startnew').on('click', startSetup);
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', playSelectedCards);
-  $('.drawtwo').on('click', fillHand);
+  $('.refillhand').on('click', fillHand);
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
   var enemycards2list = $.parseJSON($('#ec2').attr('datastuff'))
@@ -11,6 +11,11 @@ $(document).ready(function() {
   var attackcardslist = $.parseJSON($('#ac').attr('datastuff'))
   var tacticscardslist = $.parseJSON($('#tc').attr('datastuff'))
 
+  var player = {
+    hp:10,
+    tp:0,
+    vp:0
+  };
   var initTacticsCards = 3;
   var initAttackCards = 7;
   var playerDeck = [];
@@ -32,6 +37,11 @@ $(document).ready(function() {
       turnCounter += 1;
     }
     $('.startnew').remove();
+  }
+
+  function setPlayerStats(){
+    //WORK ON THIS PART, DISPLAYING STATS ON PAGE FROM JS
+    $('#infobar')
   }
 
   function enemySetup(){
