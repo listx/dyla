@@ -2,9 +2,7 @@ $(document).ready(function() {
   $('.startnew').on('click', startSetup);
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', playSelectedCards);
-  $('.drawtwo').on('click', function(){
-   drawCards(2);
-  });
+  $('.drawtwo').on('click', fillHand);
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
   var enemycards2list = $.parseJSON($('#ec2').attr('datastuff'))
@@ -13,8 +11,8 @@ $(document).ready(function() {
   var attackcardslist = $.parseJSON($('#ac').attr('datastuff'))
   var tacticscardslist = $.parseJSON($('#tc').attr('datastuff'))
 
-  var initTacticsCards = 3;
-  var initAttackCards = 7;
+  var initTacticsCards = 10;
+  var initAttackCards = 20;
   var playerDeck = [];
   var playerHand = [];
   var playerDiscard = [];
@@ -183,7 +181,8 @@ $(document).ready(function() {
     //wipe html of all played cards
     $('#playersCards div.play').remove()
     for(i = 0; i < playTheseCards.length; i++){
-      //move copy to playing cards array
+      //move copy to discard and playing cards array
+      playerDiscard.push(playerHand[playTheseCards[i]]);
       playingCards.push(playerHand[playTheseCards[i]]);
       //mark cards in hand to delete
       playerHand[playTheseCards[i]] = 'del'
@@ -195,6 +194,8 @@ $(document).ready(function() {
     }
     console.log(playerHand);
     console.log(playingCards);
+    console.log("discards has ");
+    console.log(playerDiscard);
   }
 
   function printMsg(string) {
@@ -202,6 +203,18 @@ $(document).ready(function() {
       $('.gamelog li:nth-child(1)').remove();
     }
     $('.gamelog ul').append('<li>'+string+'</li>');
+  }
+
+  function fillHand(){
+    while(playerHand.length < maxHandsize){
+      playerHand.push(playerDeck.shift());
+    }
+      showPlayer();
+  }
+
+  function reshuffleDiscard(){
+    playerDeck.concat(playerDiscard);
+    playerDiscard = [];
   }
 
   function drawCards(num){

@@ -71,7 +71,7 @@ All tech cards are face up and purchasable with no limitations except TechPoints
 4. Resolve tactics cards, then resolve damage done by attack cards.
 5. If Encounter card is not defeated, take return damage from the card.
 6. *Research phase*: Chance to purchase tech cards.
-7. *Draw phase*: If 5 or fewer cards in hand, draw 2 cards.  Else, nothing happens.  Reshuffle deck if necessary.
+7. *Draw phase*: If 5 or fewer cards in hand, draw up to 5.  Else, nothing happens.  Reshuffle deck if necessary.
 
 ## Rules details
 
