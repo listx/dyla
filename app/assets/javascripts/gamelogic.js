@@ -5,8 +5,8 @@ $(document).ready(function() {
   $('.refillhand').on('click', fillHand);
   $('.runaway').on('click',function(){
     drawEnemy();
-    takeDamage(2);
-    printMsg('You escape from the battle with minor damage, lose 2 hp');
+    printMsg('You have escaped with minor damage!');
+    loseHp(2);
   });
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
@@ -82,8 +82,6 @@ $(document).ready(function() {
     shuffle(enemyDeck3);
     //starting enemy
     drawEnemy(enemyDeck1);
-    // console.log(currentEnemy);
-    // showEnemy(currentEnemy);
   }
 
   function gatherEnemyCards1(num,cardid){
@@ -259,8 +257,36 @@ $(document).ready(function() {
     showDeckStats();
   }
 
-  function takeDamage(dam){
-    player.hp -= dam;
+  function loseHp(lose){
+    player.hp -= lose;
+    printMsg('You have taken '+lose+' damage!');
+    showPlayerStats();
+  }
+
+  function gainHp(gain){
+    player.hp += gain;
+    if(player.hp > 10){
+      player.hp = 10;
+    }
+    printMsg('You have regained '+gain+' hit points.');
+    showPlayerStats();
+  }
+
+  function loseTp(spend){
+    player.tp -= spend;
+    printMsg("You've spent "+spend+" tech points.");
+    showPlayerStats();
+  }
+
+  function gainTp(gain){
+    player.tp += gain;
+    printMsg("You've gained "+gain+" tech points.");
+    showPlayerStats();
+  }
+
+  function gainVp(gain){
+    player.vp += gain;
+    printMsg("Earned "+gain+" victory points!");
     showPlayerStats();
   }
 });
