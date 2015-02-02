@@ -11,8 +11,8 @@ $(document).ready(function() {
   var attackcardslist = $.parseJSON($('#ac').attr('datastuff'))
   var tacticscardslist = $.parseJSON($('#tc').attr('datastuff'))
 
-  var initTacticsCards = 10;
-  var initAttackCards = 20;
+  var initTacticsCards = 3;
+  var initAttackCards = 7;
   var playerDeck = [];
   var playerHand = [];
   var playerDiscard = [];
@@ -22,7 +22,7 @@ $(document).ready(function() {
   var currentEnemy = "";
   var turnCounter = 0;
   var maxMessages = 3;
-  var maxHandsize = 8;
+  var maxHandsize = 5;
   var playingCards = [];
 
   function startSetup(){
@@ -192,10 +192,6 @@ $(document).ready(function() {
       var temp = playerHand.indexOf('del');
       playerHand.splice(temp, 1);
     }
-    console.log(playerHand);
-    console.log(playingCards);
-    console.log("discards has ");
-    console.log(playerDiscard);
   }
 
   function printMsg(string) {
@@ -207,13 +203,16 @@ $(document).ready(function() {
 
   function fillHand(){
     while(playerHand.length < maxHandsize){
+      if(playerDeck.length < 1){
+        reshuffleDiscard();
+      }
       playerHand.push(playerDeck.shift());
     }
-      showPlayer();
+    showPlayer();
   }
 
   function reshuffleDiscard(){
-    playerDeck.concat(playerDiscard);
+    playerDeck = playerDeck.concat(playerDiscard);
     playerDiscard = [];
   }
 
