@@ -3,6 +3,11 @@ $(document).ready(function() {
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', playSelectedCards);
   $('.refillhand').on('click', fillHand);
+  $('.runaway').on('click',function(){
+    drawEnemy();
+    takeDamage(2);
+    printMsg('You escape from the battle with minor damage, lose 2 hp');
+  });
 
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
   var enemycards2list = $.parseJSON($('#ec2').attr('datastuff'))
@@ -77,8 +82,8 @@ $(document).ready(function() {
     shuffle(enemyDeck3);
     //starting enemy
     drawEnemy(enemyDeck1);
-    console.log(currentEnemy);
-    showEnemy(currentEnemy);
+    // console.log(currentEnemy);
+    // showEnemy(currentEnemy);
   }
 
   function gatherEnemyCards1(num,cardid){
@@ -97,14 +102,30 @@ $(document).ready(function() {
     }
   }
 
-  function drawEnemy(deck){
-    currentEnemy = deck.shift();
+  function drawEnemy(){
+    clearEnemy();
+    if(enemyDeck1.length > 0){
+      currentEnemy = enemyDeck1.shift();
+    }
+    else if(enemyDeck2.length > 0){
+      currentEnemy = enemyDeck2.shift();
+    }
+    else {
+      currentEnemy = enemyDeck3.shift();
+    }
+    showEnemy(currentEnemy);
   }
 
   function showEnemy(card){
     $('#enemypicture').append("<p>A picture of "+card.name+" goes here</p>");
     $('#enemystats').append("<div class='enemycard'>name:"+card.name+"<br>hp:"+card.hp+"<br>damage:"+card.damage+"<br>tech points:"+card.tp+"<br>victory points:"+card.vp+"<br>text:"+card.description+"</div>");
     $('.enemylevel').html(card.lvl);
+  }
+
+  function clearEnemy(){
+    currentEnemy = "";
+    $('#enemypicture p:nth-child(2)').remove();
+    $('.enemycard').remove();
   }
 
   function playerSetup(){
@@ -236,5 +257,10 @@ $(document).ready(function() {
     }
     showPlayer();
     showDeckStats();
+  }
+
+  function takeDamage(dam){
+    player.hp -= dam;
+    showPlayerStats();
   }
 });
