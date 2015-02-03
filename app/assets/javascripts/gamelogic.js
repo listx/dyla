@@ -1,7 +1,11 @@
 $(document).ready(function() {
   $('.startnew').on('click', startSetup);
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
-  $('.playselected').on('click', playSelectedCards);
+  $('.playselected').on('click', function(){
+    playSelectedCards();
+    parsePlayedEffects();
+    resolveAllEffects();
+    });
   $('.refillhand').on('click', fillHand);
   $('.runaway').on('click',function(){
     if(player.hp > 2){
@@ -39,6 +43,10 @@ $(document).ready(function() {
   var maxMessages = 10;
   var maxHandsize = 5;
   var playingCards = [];
+  var resolveEffects = {
+    dam: 0,
+    shield: 0
+  }
 
   function startSetup(){
     if(turnCounter === 0){
@@ -128,6 +136,11 @@ $(document).ready(function() {
     $('.enemycard td.vp').html(card.vp);
     $('.enemycard td.text').html(card.description);
     $('.enemylevel').html(card.lvl);
+  }
+
+  function enemyLoseHp(num){
+    currentEnemy.hp -= num;
+    $('.enemycard td.hp').html(currentEnemy.hp);
   }
 
   function clearEnemy(){
@@ -230,6 +243,26 @@ $(document).ready(function() {
       playerHand.splice(temp, 1);
     }
     showDeckStats();
+  }
+
+  function parsePlayedEffects(){
+    for(var i = 0; i < playingCards.length; i++){
+      if(playingCards[i].hasOwnProperty('damage')){
+        resolveEffects.dam += playingCards[i].damage;
+      }
+    }
+  }
+
+  function resolveAllEffects(){
+    printMsg('You have dealt '+resolveEffects.dam+' damage!');
+    enemyLoseHp(resolveEffects.dam);
+    zeroEffects();
+  }
+
+  function zeroEffects(){
+    playingCards = [];
+    resolveEffects.dam = 0;
+    resolveEffects.shield = 0;
   }
 
   function printMsg(string) {
