@@ -18,6 +18,7 @@ $(document).ready(function() {
     }
   });
 
+//variables for game use
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
   var enemycards2list = $.parseJSON($('#ec2').attr('datastuff'))
   var enemycards3list = $.parseJSON($('#ec3').attr('datastuff'))
@@ -48,6 +49,7 @@ $(document).ready(function() {
     shield: 0
   }
 
+//end of variables
   function startSetup(){
     if(turnCounter === 0){
       enemySetup();
@@ -59,18 +61,7 @@ $(document).ready(function() {
     $('.startnew').remove();
   }
 
-  function showPlayerStats(){
-    $('#infobar .playerhp').html(player.hp);
-    $('#infobar .playertp').html(player.tp);
-    $('#infobar .playervp').html(player.vp);
-    $('#infobar .playerturn').html(turnCounter);
-  }
-
-  function showDeckStats(){
-    $('#deckanddiscard .deckcount').html(playerDeck.length);
-    $('#deckanddiscard .discardcount').html(playerDiscard.length);
-  }
-
+//enemy setup
   function enemySetup(){
     // deck 1
     gatherEnemyCards1(10,0);
@@ -96,7 +87,6 @@ $(document).ready(function() {
     //starting enemy
     drawEnemy(enemyDeck1);
   }
-
   function gatherEnemyCards1(num,cardid){
     for (var i = 0; i < num; i++) {
       enemyDeck1.push(enemycards1list[cardid]);
@@ -138,16 +128,17 @@ $(document).ready(function() {
     $('.enemylevel').html(card.lvl);
   }
 
-  function enemyLoseHp(num){
-    currentEnemy.hp -= num;
-    $('.enemycard td.hp').html(currentEnemy.hp);
-  }
-
   function clearEnemy(){
     currentEnemy = "";
     $('#enemypicture p:nth-child(2)').remove();
   }
 
+  function enemyLoseHp(num){
+    currentEnemy.hp -= num;
+    $('.enemycard td.hp').html(currentEnemy.hp);
+  }
+
+// player setup
   function playerSetup(){
     var start = [];
     for(i = 0; i < initTacticsCards; i++) {
@@ -165,22 +156,16 @@ $(document).ready(function() {
     showPlayer();
   }
 
-  function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex ;
+  function showPlayerStats(){
+    $('#infobar .playerhp').html(player.hp);
+    $('#infobar .playertp').html(player.tp);
+    $('#infobar .playervp').html(player.vp);
+    $('#infobar .playerturn').html(turnCounter);
+  }
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-      }
-      return array;
+  function showDeckStats(){
+    $('#deckanddiscard .deckcount').html(playerDeck.length);
+    $('#deckanddiscard .discardcount').html(playerDiscard.length);
   }
 
   function clearPlayer(){
@@ -206,7 +191,25 @@ $(document).ready(function() {
   function showTacticsCard(card){
     $('#playersCards').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>text:"+card.description+"</div>");
   }
+// shuffle
+ function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex ;
 
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+      }
+      return array;
+  }
+// game functions
   function selectCardtoPlay(){
     if($(this).attr('class') === 'playercard noplay'){
     $(this).attr('class', 'playercard play')
