@@ -85,7 +85,7 @@ $(document).ready(function() {
     shuffle(enemyDeck2);
     shuffle(enemyDeck3);
     //starting enemy
-    drawEnemy(enemyDeck1);
+    drawEnemy();
   }
   function gatherEnemyCards1(num,cardid){
     for (var i = 0; i < num; i++) {
@@ -114,6 +114,7 @@ $(document).ready(function() {
     else {
       currentEnemy = enemyDeck3.shift();
     }
+    printMsg('entering battle with '+currentEnemy.name);
     showEnemy(currentEnemy);
   }
 
@@ -136,6 +137,10 @@ $(document).ready(function() {
   function enemyLoseHp(num){
     currentEnemy.hp -= num;
     $('.enemycard td.hp').html(currentEnemy.hp);
+    if(currentEnemy.hp < 1){
+      printMsg(currentEnemy.name + " defeated!");
+      drawEnemy();
+    }
   }
 
 // player setup
@@ -223,7 +228,7 @@ $(document).ready(function() {
     var playTheseCards = [];
     var idx = 0;
     // find all cards to play
-    while(idx < maxHandsize) {
+    while(idx <= maxHandsize) {
       if($( "div#playersCards div:nth-child("+idx+")" ).attr('class') === 'playercard play'){
         //save indexes of cards to play
         printMsg("You have played "+playerHand[idx - 1].name);
@@ -282,6 +287,8 @@ $(document).ready(function() {
       }
       playerHand.push(playerDeck.shift());
     }
+    turnCounter++;
+    showPlayerStats();
     showPlayer();
     showDeckStats();
   }
