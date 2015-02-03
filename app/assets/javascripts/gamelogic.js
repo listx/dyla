@@ -103,8 +103,13 @@ $(document).ready(function() {
     }
   }
 
+
+  function clearEnemy(){
+    currentEnemy = "";
+    $('#enemypicture p:nth-child(2)').remove();
+  }
+
   function drawEnemy(){
-    clearEnemy();
     if(enemyDeck1.length > 0){
       currentEnemy = enemyDeck1.shift();
     }
@@ -114,7 +119,7 @@ $(document).ready(function() {
     else {
       currentEnemy = enemyDeck3.shift();
     }
-    printMsg('entering battle with '+currentEnemy.name);
+    printMsg('entering battle with '+currentEnemy.name+" with "+currentEnemy.hp+" hp");
     showEnemy(currentEnemy);
   }
 
@@ -129,16 +134,17 @@ $(document).ready(function() {
     $('.enemylevel').html(card.lvl);
   }
 
-  function clearEnemy(){
-    currentEnemy = "";
-    $('#enemypicture p:nth-child(2)').remove();
-  }
-
   function enemyLoseHp(num){
-    currentEnemy.hp -= num;
-    $('.enemycard td.hp').html(currentEnemy.hp);
-    if(currentEnemy.hp < 1){
-      printMsg(currentEnemy.name + " defeated!");
+    //find current hp
+    var temphp = $('.enemycard td.hp').html();
+    //decrement damage and update hp
+    temphp -= num;
+    $('.enemycard td.hp').html(temphp);
+    //check if dead
+    if(temphp < 1){
+      player.vp += currentEnemy.vp;
+      printMsg(currentEnemy.name + " defeated! Gained "+currentEnemy.vp+" VP!");
+      clearEnemy();
       drawEnemy();
     }
   }
@@ -265,6 +271,7 @@ $(document).ready(function() {
     printMsg('You have dealt '+resolveEffects.dam+' damage!');
     enemyLoseHp(resolveEffects.dam);
     zeroEffects();
+    showPlayerStats();
   }
 
   function zeroEffects(){
