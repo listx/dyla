@@ -48,8 +48,9 @@ $(document).ready(function() {
     dam: 0,
     shield: 0
   }
-
 //end of variables
+
+//setup functions
   function startSetup(){
     if(turnCounter === 0){
       enemySetup();
@@ -103,13 +104,13 @@ $(document).ready(function() {
     }
   }
 
-
   function clearEnemy(){
     currentEnemy = "";
     $('#enemypicture p:nth-child(2)').remove();
   }
 
   function drawEnemy(){
+    clearEnemy();
     if(enemyDeck1.length > 0){
       currentEnemy = enemyDeck1.shift();
     }
