@@ -128,7 +128,7 @@ $(document).ready(function() {
     $('#enemypicture').append("<p>A picture of "+card.name+" goes here</p>");
     $('.enemycard td.name').html(card.name);
     $('.enemycard td.hp').html(card.hp);
-    $('.enemycard td.dam').html(card.dam);
+    $('.enemycard td.dam').html(card.damage);
     $('.enemycard td.tp').html(card.tp);
     $('.enemycard td.vp').html(card.vp);
     $('.enemycard td.text').html(card.description);
@@ -147,6 +147,9 @@ $(document).ready(function() {
       printMsg(currentEnemy.name + " defeated! Gained "+currentEnemy.vp+" VP!");
       clearEnemy();
       drawEnemy();
+    }
+    else {
+      enemyAttack();
     }
   }
 
@@ -265,6 +268,9 @@ $(document).ready(function() {
       if(playingCards[i].hasOwnProperty('damage')){
         resolveEffects.dam += playingCards[i].damage;
       }
+      else if(playingCards[i].name === 'Evade'){
+        resolveEffects.shield += 1;
+      }
     }
   }
 
@@ -273,6 +279,18 @@ $(document).ready(function() {
     enemyLoseHp(resolveEffects.dam);
     zeroEffects();
     showPlayerStats();
+  }
+
+  function enemyAttack(){
+    var tempDamage = currentEnemy.damage - resolveEffects.shield;
+    if(tempDamage < 0){
+      tempDamage = 0;
+    }
+    printMsg('Dodge '+resolveEffects.shield+' damage. '+currentEnemy.name+' hits you for '+tempDamage+' damage!');
+    player.hp -= tempDamage;
+    if(player.hp < 1){
+      youLose();
+    }
   }
 
   function zeroEffects(){
@@ -349,4 +367,9 @@ $(document).ready(function() {
     printMsg("Earned "+gain+" victory points!");
     showPlayerStats();
   }
+
+  function youLose(){
+    $('#playerhand').remove();
+    $('.gamelog').html('YOU HAVE BEEN DESTROYED!')
+  };
 });
