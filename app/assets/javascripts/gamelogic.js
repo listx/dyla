@@ -15,6 +15,7 @@ $(document).ready(function() {
   $('.buyall').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
+    buyTech();
   });
   $('.cancelshop').on('click', function(){
     $('.gamelog').toggle();
@@ -80,6 +81,7 @@ $(document).ready(function() {
     dam: 0,
     shield: 0
   }
+  var shoppingcart = {};
 //end of variables
 
 //setup functions
@@ -413,6 +415,40 @@ $(document).ready(function() {
     player.vp += gain;
     printMsg("Earned "+gain+" victory points!");
     showPlayerStats();
+  }
+
+  function buyTech(){
+    //get attack cards
+    for(var idx = 1;idx <= attackcardslist.length;idx++){
+      shoppingcart["atk"+idx] = $('.atk'+idx).val();
+    }
+    //get tactics cards
+    for(var idx = 1;idx <= tacticscardslist.length;idx++){
+      shoppingcart["tac"+idx] = $('.tac'+idx).val();
+    }
+    getTech();
+  }
+
+  function getTech(){
+    console.log(shoppingcart);
+    //loop over shoppingcart, add cards equal to the obj values
+    for(var key in shoppingcart){
+      if(key.substring(0,3) === "atk" && shoppingcart[key] > 0){
+        var i = key.substring(3,4) - 1;
+        for(var num = 0; num < shoppingcart[key]; num++)
+        {
+          playerDeck.unshift(attackcardslist[i]);
+        }
+      }
+      else{
+        var i = key.substring(3,4) - 1;
+        for(var num = 0; num < shoppingcart[key]; num++)
+        {
+          console.log(tacticscardslist[i].name);
+          playerDeck.unshift(tacticscardslist[i]);
+        }
+      }
+    }
   }
 
   function youLose(){
