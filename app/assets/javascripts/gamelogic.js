@@ -348,7 +348,7 @@ $(document).ready(function() {
     if(resolveEffects.tpgain > 0){
       gainTp(resolveEffects.tpgain);
     }
-    if(resolveEffects.tpgain > 0){
+    if(resolveEffects.hpgain > 0){
       gainHp(resolveEffects.hpgain);
     }
     printMsg('You have dealt '+resolveEffects.dam+' damage!');
