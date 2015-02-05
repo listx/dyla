@@ -252,11 +252,11 @@ $(document).ready(function() {
   }
 
   function showAttackCard(card){
-    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><span class='attacktitle'>"+card.name+"</span><br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><span class='attacktitle'>"+card.name+"</span><br>damage: "+card.damage+"<br><span class='flavortext'>"+card.description+"</span></div>");
   }
 
   function showTacticsCard(card){
-    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><span class='tacticstitle'>"+card.name+"</span><br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><span class='tacticstitle'>"+card.name+"</span><br>effect: "+card.description+"</div>");
   }
 // shuffle
  function shuffle(array) {
