@@ -173,7 +173,6 @@ $(document).ready(function() {
   }
 
   function showEnemy(card){
-    console.log(card);
     $('.enemypic img').attr('src', '/assets/'+card.img)
     $('.enemycard td.name').html(card.name);
     $('.enemycard td.hp').html(card.hp);
