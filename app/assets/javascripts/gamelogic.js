@@ -430,9 +430,8 @@ $(document).ready(function() {
   }
 
   function getTech(){
-    console.log(shoppingcart);
-    //loop over shoppingcart, add cards equal to the obj values
     for(var key in shoppingcart){
+      // buy attack cards
       if(key.substring(0,3) === "atk" && shoppingcart[key] > 0){
         var i = key.substring(3,4) - 1;
         for(var num = 0; num < shoppingcart[key]; num++)
@@ -440,15 +439,16 @@ $(document).ready(function() {
           playerDeck.unshift(attackcardslist[i]);
         }
       }
+      // buy tactics cards
       else{
         var i = key.substring(3,4) - 1;
         for(var num = 0; num < shoppingcart[key]; num++)
         {
-          console.log(tacticscardslist[i].name);
           playerDeck.unshift(tacticscardslist[i]);
         }
       }
     }
+    showDeckStats();
   }
 
   function youLose(){
