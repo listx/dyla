@@ -2,11 +2,15 @@ $(document).ready(function() {
   $('.startnew').on('click', startSetup);
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', function(){
+    togglePlayButton();
     playSelectedCards();
     parsePlayedEffects();
     resolveAllEffects();
     });
-  $('.refillhand').on('click', fillHand);
+  $('.refillhand').on('click', function(){
+    togglePlayButton();
+    fillHand();
+    });
   $('.runaway').on('click',function(){
     if(player.hp > 2){
       drawEnemy();
@@ -17,6 +21,18 @@ $(document).ready(function() {
       printMsg('Too damaged to escape!');
     }
   });
+
+//UI toggle
+  function togglePlayButton(){
+    if($('.playselected').css('visibility') === 'visible'){
+      $('.playselected').css('visibility', 'hidden')
+      $('.refillhand').css('visibility', 'visible')
+    }
+    else{
+      $('.playselected').css('visibility', 'visible')
+      $('.refillhand').css('visibility', 'hidden')
+    }
+  }
 
 //variables for game use
   var enemycards1list = $.parseJSON($('#ec1').attr('datastuff'))
@@ -53,6 +69,7 @@ $(document).ready(function() {
 //setup functions
   function startSetup(){
     if(turnCounter === 0){
+      turnOnButtons();
       enemySetup();
       playerSetup();
       turnCounter += 1;
@@ -60,6 +77,10 @@ $(document).ready(function() {
     showPlayerStats();
     showDeckStats();
     $('.startnew').remove();
+  }
+
+  function turnOnButtons(){
+    $('.playselected').css('visibility', 'visible');
   }
 
 //enemy setup
@@ -143,8 +164,9 @@ $(document).ready(function() {
     $('.enemycard td.hp').html(temphp);
     //check if dead
     if(temphp < 1){
+      player.tp += currentEnemy.tp;
       player.vp += currentEnemy.vp;
-      printMsg(currentEnemy.name + " defeated! Gained "+currentEnemy.vp+" VP!");
+      printMsg(currentEnemy.name + " defeated! Gained "+currentEnemy.tp+" TP and "+currentEnemy.vp+" VP!");
       clearEnemy();
       drawEnemy();
     }
