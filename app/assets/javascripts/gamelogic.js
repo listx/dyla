@@ -8,10 +8,19 @@ $(document).ready(function() {
     parsePlayedEffects();
     resolveAllEffects();
     });
-  $('.techshop').on('click', function(){
+  $('.shopbutton').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
   });
+  $('.buyall').on('click', function(){
+    $('.gamelog').toggle();
+    $('#techshop').toggle();
+  });
+  $('.cancelshop').on('click', function(){
+    $('.gamelog').toggle();
+    $('#techshop').toggle();
+  });
+
   $('.refillhand').on('click', function(){
     togglePlayButton();
     fillHand();
@@ -31,10 +40,12 @@ $(document).ready(function() {
   function togglePlayButton(){
     if($('.playselected').css('visibility') === 'visible'){
       $('.playselected').css('visibility', 'hidden')
+      $('.shopbutton').css('visibility', 'visible')
       $('.refillhand').css('visibility', 'visible')
     }
     else{
       $('.playselected').css('visibility', 'visible')
+      $('.shopbutton').css('visibility', 'hidden')
       $('.refillhand').css('visibility', 'hidden')
     }
   }
