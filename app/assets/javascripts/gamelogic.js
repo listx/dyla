@@ -173,7 +173,8 @@ $(document).ready(function() {
   }
 
   function showEnemy(card){
-    $('#enemypicture').append("<p>A picture of "+card.name+" goes here</p>");
+    console.log(card);
+    $('.enemypic img').attr('src', '/assets/'+card.img)
     $('.enemycard td.name').html(card.name);
     $('.enemycard td.hp').html(card.hp);
     $('.enemycard td.dam').html(card.damage);
@@ -250,11 +251,11 @@ $(document).ready(function() {
   }
 
   function showAttackCard(card){
-    $('#playersCards').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><br>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
   }
 
   function showTacticsCard(card){
-    $('#playersCards').append("<div class='playercard noplay'>image here<br>name:"+card.name+"<br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><br>name:"+card.name+"<br>text:"+card.description+"</div>");
   }
 // shuffle
  function shuffle(array) {

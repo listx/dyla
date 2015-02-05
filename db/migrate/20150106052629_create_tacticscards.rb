@@ -4,6 +4,7 @@ class CreateTacticscards < ActiveRecord::Migration
       t.string :name
       t.integer :cost
       t.text :description
+      t.text :img
 
       t.timestamps null: false
     end

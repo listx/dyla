@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150106052629) do
     t.integer  "cost"
     t.integer  "damage"
     t.text     "description"
+    t.text     "img"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150106052629) do
     t.integer  "vp"
     t.integer  "tp"
     t.text     "description"
+    t.text     "img"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150106052629) do
     t.string   "name"
     t.integer  "cost"
     t.text     "description"
+    t.text     "img"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

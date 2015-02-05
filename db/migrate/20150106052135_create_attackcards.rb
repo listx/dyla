@@ -5,6 +5,7 @@ class CreateAttackcards < ActiveRecord::Migration
       t.integer :cost
       t.integer :damage
       t.text :description
+      t.text :img
 
       t.timestamps null: false
     end

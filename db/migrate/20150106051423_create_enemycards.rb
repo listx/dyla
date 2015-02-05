@@ -8,6 +8,7 @@ class CreateEnemycards < ActiveRecord::Migration
       t.integer :vp
       t.integer :tp
       t.text :description
+      t.text :img
 
       t.timestamps null: false
     end
