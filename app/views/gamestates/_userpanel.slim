@@ -1,21 +1,10 @@
 #ac datastuff="#{@attackcards.to_json}"
 #tc datastuff="#{@tacticscards.to_json}"
 
-#playerdeckdiscard
-  table#deckanddiscard
-    tr
-      td width="80px" Deck
-      td.deckcount width="50px" 10
-    tr
-      td Discard
-      td.discardcount 0
-
 #playerhand
   button type="button" class="playselected"
     ' Play all selected cards
   button type="button" class="techshop" Purchase tech
   button type="button" class="refillhand"
     ' Refill hand
-  = render 'form'
   #playersCards
-

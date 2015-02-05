@@ -13,9 +13,9 @@ $(document).ready(function() {
     });
   $('.runaway').on('click',function(){
     if(player.hp > 2){
-      drawEnemy();
       printMsg('You have escaped with minor damage!');
       loseHp(2);
+      drawEnemy();
     }
     else{
       printMsg('Too damaged to escape!');
@@ -141,7 +141,7 @@ $(document).ready(function() {
     else {
       currentEnemy = enemyDeck3.shift();
     }
-    printMsg('entering battle with '+currentEnemy.name+" with "+currentEnemy.hp+" hp");
+    printMsg('Entering battle with '+currentEnemy.name+" with "+currentEnemy.hp+" hp");
     showEnemy(currentEnemy);
   }
 
