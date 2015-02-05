@@ -10,54 +10,10 @@
     ul
 
   #techshop
-    | Tech Shop
-    table border="1"
-      caption Attack Cards
-      tr bgcolor="#FF0000"
-        th Cost
-        th Name
-        th Damage
-      - for card in @attackcards
-        tr
-          td #{card.cost}
-          td #{card.name}
-          td #{card.damage}
-    table border="1"
-      caption Tactics Cards
-      tr bgcolor="#FFFF00"
-        th Cost
-        th Name
-        th Text
-      - for card in @tacticscards
-        tr
-          td #{card.cost}
-          td #{card.name}
-          td #{card.description}
-    button type="button" class="buyall" Buy Selected
-    button type="button" class="cancelshop" Cancel
+    = render 'shop'
 
   #infobar
-    table#playerStats
-      tr
-        td width="120px" Hit Points
-        td.playerhp width="30px" 10
-      tr
-        td Tech Points
-        td.playertp 0
-      tr
-        td Victory Points
-        td.playervp 0
-      tr
-        td turn
-        td.playerturn 0
-    #playerdeckdiscard
-      table#deckanddiscard
-        tr
-          td width="80px" Deck
-          td.deckcount width="50px" 10
-        tr
-          td Discard
-          td.discardcount 0
+    = render 'infobar'
 
 .userpanel
   = render 'userpanel'
