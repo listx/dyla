@@ -15,7 +15,7 @@ $(document).ready(function() {
   $('.buyall').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
-    buyTech();
+    getTech();
   });
   $('.cancelshop').on('click', function(){
     $('.gamelog').toggle();
@@ -79,9 +79,12 @@ $(document).ready(function() {
   var playingCards = [];
   var resolveEffects = {
     dam: 0,
-    shield: 0
+    shield: 0,
+    hpgain: 0,
+    tpgain: 0
   }
   var shoppingcart = {};
+  var shoppingbill = 0;
 //end of variables
 
 //setup functions
@@ -313,17 +316,41 @@ $(document).ready(function() {
   }
 
   function parsePlayedEffects(){
+    var playedAtks = 0;
     for(var i = 0; i < playingCards.length; i++){
       if(playingCards[i].hasOwnProperty('damage')){
+        playedAtks += 1;
         resolveEffects.dam += playingCards[i].damage;
       }
       else if(playingCards[i].name === 'Evade'){
         resolveEffects.shield += 1;
       }
+      else if(playingCards[i].name === 'Smoke Dispensers'){
+        resolveEffects.shield += 2;
+      }
+      else if(playingCards[i].name === 'Antibeam depth charge'){
+        resolveEffects.dam += 3;
+        resolveEffects.shield += 3;
+      }
+      else if(playingCards[i].name === 'Emergency repairs'){
+        resolveEffects.hpgain += 1;
+      }
+      else if(playingCards[i].name === 'Scavenge supplies'){
+        resolveEffects.tpgain += 1;
+      }
+      else if(playingCards[i].name === 'Targeting computers'){
+        resolveEffects.dam += playedAtks;
+      }
     }
   }
 
   function resolveAllEffects(){
+    if(resolveEffects.tpgain > 0){
+      gainTp(resolveEffects.tpgain);
+    }
+    if(resolveEffects.tpgain > 0){
+      gainHp(resolveEffects.hpgain);
+    }
     printMsg('You have dealt '+resolveEffects.dam+' damage!');
     enemyLoseHp(resolveEffects.dam);
     zeroEffects();
@@ -346,6 +373,8 @@ $(document).ready(function() {
     playingCards = [];
     resolveEffects.dam = 0;
     resolveEffects.shield = 0;
+    resolveEffects.hpgain = 0;
+    resolveEffects.tpgain = 0;
   }
 
   function printMsg(string) {
@@ -417,7 +446,7 @@ $(document).ready(function() {
     showPlayerStats();
   }
 
-  function buyTech(){
+  function getTech(){
     //get attack cards
     for(var idx = 1;idx <= attackcardslist.length;idx++){
       shoppingcart["atk"+idx] = $('.atk'+idx).val();
@@ -426,10 +455,17 @@ $(document).ready(function() {
     for(var idx = 1;idx <= tacticscardslist.length;idx++){
       shoppingcart["tac"+idx] = $('.tac'+idx).val();
     }
-    getTech();
+    if(costOk()){
+      receiveTech();
+      payForGoods();
+    }
+    else{
+      shoppingbill = 0;
+      alert("SHOPPING FAILED, you're too poor to afford all that!");
+    }
   }
 
-  function getTech(){
+  function receiveTech(){
     for(var key in shoppingcart){
       // buy attack cards
       if(key.substring(0,3) === "atk" && shoppingcart[key] > 0){
@@ -439,7 +475,7 @@ $(document).ready(function() {
           playerDeck.unshift(attackcardslist[i]);
         }
       }
-      // buy tactics cards
+      // buy tactics
       else{
         var i = key.substring(3,4) - 1;
         for(var num = 0; num < shoppingcart[key]; num++)
@@ -448,6 +484,37 @@ $(document).ready(function() {
         }
       }
     }
+  }
+
+  function costOk(){
+    for(var key in shoppingcart){
+      if(key.substring(0,3) === "atk"){
+        var i = key.substring(3,4) - 1;
+        for(var num = 0; num < shoppingcart[key]; num++)
+        {
+          shoppingbill += attackcardslist[i].cost
+        }
+      }
+      else {
+        var i = key.substring(3,4) - 1;
+        for(var num = 0; num < shoppingcart[key]; num++)
+        {
+          shoppingbill += tacticscardslist[i].cost
+        }
+      }
+    }
+    if(shoppingbill <= player.tp){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  function payForGoods(){
+    player.tp -= shoppingbill;
+    printMsg('You have spent '+shoppingbill+' TP.');
+    shoppingbill = 0;
     showDeckStats();
   }
 
