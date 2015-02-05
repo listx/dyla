@@ -250,11 +250,11 @@ $(document).ready(function() {
   }
 
   function showAttackCard(card){
-    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><div style='height:10px;background-color:red'></div>name:"+card.name+"<br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><span class='attacktitle'>"+card.name+"</span><br>damage:"+card.damage+"<br>text:"+card.description+"</div>");
   }
 
   function showTacticsCard(card){
-    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><div style='height:10px;background-color:yellow'></div>name:"+card.name+"<br>text:"+card.description+"</div>");
+    $('#playersCards').append("<div class='playercard noplay'><img src='/assets/"+card.img+"'/><span class='tacticstitle'>"+card.name+"</span><br>text:"+card.description+"</div>");
   }
 // shuffle
  function shuffle(array) {
@@ -286,19 +286,16 @@ $(document).ready(function() {
 
   function playSelectedCards(){
     var playTheseCards = [];
-    var idx = 0;
-    // find all cards to play
-    while(idx <= maxHandsize) {
+    for(var idx = 1;idx<=5;idx++){
       if($( "div#playersCards div:nth-child("+idx+")" ).attr('class') === 'playercard play'){
         //save indexes of cards to play
         printMsg("You have played "+playerHand[idx - 1].name);
         playTheseCards.push(idx - 1);
       }
-      idx++;
     }
     //wipe html of all played cards
     $('#playersCards div.play').remove()
-    for(i = 0; i < playTheseCards.length; i++){
+    for(var i = 0; i < playTheseCards.length; i++){
       //move copy to discard and playing cards array
       playerDiscard.push(playerHand[playTheseCards[i]]);
       playingCards.push(playerHand[playTheseCards[i]]);
