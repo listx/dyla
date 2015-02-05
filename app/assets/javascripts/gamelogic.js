@@ -516,6 +516,7 @@ $(document).ready(function() {
     printMsg('You have spent '+shoppingbill+' TP.');
     shoppingbill = 0;
     showDeckStats();
+    showPlayerStats();
   }
 
   function youLose(){
