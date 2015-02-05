@@ -8,6 +8,32 @@
   .gamelog
     | Game Log
     ul
+
+  #techshop
+    | Tech Shop
+    table border="1"
+      caption Attack Cards
+      tr
+        th Cost
+        th Name
+        th Damage
+      - for card in @attackcards
+        tr
+          td #{card.cost}
+          td #{card.name}
+          td #{card.damage}
+    table border="1"
+      caption Tactics Cards
+      tr
+        th Cost
+        th Name
+        th Text
+      - for card in @tacticscards
+        tr
+          td #{card.cost}
+          td #{card.name}
+          td #{card.description}
+
   #infobar
     table#playerStats
       tr

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('#techshop').toggle();
   $('.startnew').on('click', startSetup);
   $('#playersCards').on('click', '.playercard', selectCardtoPlay);
   $('.playselected').on('click', function(){
@@ -7,6 +8,10 @@ $(document).ready(function() {
     parsePlayedEffects();
     resolveAllEffects();
     });
+  $('.techshop').on('click', function(){
+    $('.gamelog').toggle();
+    $('#techshop').toggle();
+  });
   $('.refillhand').on('click', function(){
     togglePlayButton();
     fillHand();
