@@ -168,7 +168,7 @@ $(document).ready(function() {
     else {
       currentEnemy = enemyDeck3.shift();
     }
-    printMsg('Entering battle with '+currentEnemy.name+" with "+currentEnemy.hp+" hp");
+    printMsg('Entering battle with '+currentEnemy.name+" (with "+currentEnemy.hp+" hp)");
     showEnemy(currentEnemy);
   }
 
