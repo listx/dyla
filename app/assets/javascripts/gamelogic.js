@@ -125,6 +125,17 @@ $(document).ready(function() {
     }
   }
 
+  function clearEnemyLevel(){
+    if(player.vp >= 5 && enemyDeck1.length > 0){
+      enemyDeck1 = [];
+      printMsg('Level 1 enemies cleared...');
+    }
+    else if(player.vp >= 10 && enemyDeck2.length > 0){
+      enemyDeck2 = [];
+      printMsg('Level 2 enemies cleared...');
+    }
+  }
+
   function clearEnemy(){
     currentEnemy = "";
     $('#enemypicture p:nth-child(2)').remove();
@@ -167,6 +178,7 @@ $(document).ready(function() {
       player.tp += currentEnemy.tp;
       player.vp += currentEnemy.vp;
       printMsg(currentEnemy.name + " defeated! Gained "+currentEnemy.tp+" TP and "+currentEnemy.vp+" VP!");
+      clearEnemyLevel();
       clearEnemy();
       drawEnemy();
     }
