@@ -8,12 +8,8 @@ $(document).ready(function() {
     parsePlayedEffects();
     resolveAllEffects();
     });
-  $('.playall').on('click',function(){
-    togglePlayButton();
-    playAll();
-    parsePlayedEffects();
-    resolveAllEffects();
-  })
+  $('.selectall').on('click',
+    selectAll);
   $('.shopbutton').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
@@ -54,13 +50,13 @@ $(document).ready(function() {
   function togglePlayButton(){
     if($('.playselected').css('visibility') === 'visible'){
       $('.playselected').css('visibility', 'hidden')
-      $('.playall').css('visibility', 'hidden')
+      $('.selectall').css('visibility', 'hidden')
       $('.shopbutton').css('visibility', 'visible')
       $('.refillhand').css('visibility', 'visible')
     }
     else{
       $('.playselected').css('visibility', 'visible')
-      $('.playall').css('visibility', 'visible')
+      $('.selectall').css('visibility', 'visible')
       $('.shopbutton').css('visibility', 'hidden')
       $('.refillhand').css('visibility', 'hidden')
     }
@@ -106,6 +102,7 @@ $(document).ready(function() {
   function startSetup(){
     if(turnCounter === 0){
       $('#playerhand').css('visibility', 'visible');
+      $('.top').css('visibility', 'visible');
       turnOnButtons();
       enemySetup();
       playerSetup();
@@ -118,7 +115,7 @@ $(document).ready(function() {
 
   function turnOnButtons(){
     $('.playselected').css('visibility', 'visible');
-    $('.playall').css('visibility', 'visible');
+    $('.selectall').css('visibility', 'visible');
   }
 
 //enemy setup
@@ -306,9 +303,8 @@ $(document).ready(function() {
     }
   }
 
-  function playAll(){
+  function selectAll(){
     $('.noplay').attr('class', 'playercard play');
-    playSelectedCards();
   }
 
   function playSelectedCards(){

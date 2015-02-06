@@ -43,21 +43,28 @@ html
           .enemypanel
             display: inline-block
             vertical-align: top
-            height: 350px
-            width: 300px
+            height: 418px
+            width: 304px
             .enemy-card
+              height: 418px
+              width: 304px
+              border: 2px solid #666666
               #enemypicture
+                padding: 10px
                 width: 300px
-                height: 120px
-                background-color: $c5
+                height: 140px
+                background-color: #333333
               #enemystats
+                padding: 10px
                 width: 300px
                 background-color: $c4
               #enemydecks
                 width: 300px
-                background-color: darken($c4, 15)
+                background-color: #FF0000
+                color: white
           .userpanel
             #playerhand
+              border: 2px solid #666666
               visibility: hidden
               height: 280px
               background: rgba(0, 36, 107, 0.8)
@@ -78,29 +85,45 @@ html
             color: black
 
 #notice
+  text-align: center
   .titlebanner
-    color: blue
+    color: #99FF99
+    border: 2px solid #666666
     font-size: 20px
-    height: 25px
-    background-color: #CCCCCC
+    height: 35px
+    background-color: #1A1A1A
     margin-bottom: 5px
     text-align: center
 
+.startnew
+  color: red
+  width: 200px
+  height: 50px
+  font-size: 24px
+  margin: 10px
+
 .top
-  height: 410px
+  height: 420px
+  visibility: hidden
 #rundiv
   width: 300px
-  background-color: #CCCCCC
+  background-color: #333333
+  text-align: center
+  color: white
+  padding: 5px
+  button.runaway
+    color: black
 
 .gamelog
-  background-color: #333333
-  color: white
+  background-color: #1A1A1A
+  color: #99FF99
   display: inline-block
   vertical-align: top
   height: 400px
   width: 500px
   border: 2px solid #666666
   overflow: scroll
+  padding: 10px
 
 #techshop
   background-color: white
@@ -136,9 +159,15 @@ html
   height: 200px
   border: 2px solid #666666
   padding: 5px
+  table#playerStats
+    tr
+      td.vpcolor
+        color: #FFFF00
+      td.playervp
+        color: #FFFF00
 
 #playerdeckdiscard
-  background-color: #333333
+  background-color: #1A1A1A
   width: 120px
   height: 50px
   margin: 50px auto 0 auto
@@ -156,6 +185,7 @@ html
   background-color: white
   border: 2px solid black
   margin: 0 auto 0 auto
+  padding: 10px
 
 #playersCards
   margin-top: 20px
@@ -190,7 +220,7 @@ html
 .playselected
   visibility: hidden
 
-.playall
+.selectall
   visibility: hidden
 
 .shopbutton
