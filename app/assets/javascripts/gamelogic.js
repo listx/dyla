@@ -89,7 +89,7 @@ $(document).ready(function() {
   var enemyDeck3 = [];
   var currentEnemy = "";
   var turnCounter = 0;
-  var maxMessages = 10;
+  var maxMessages = 50;
   var maxHandsize = 5;
   var playingCards = [];
   var resolveEffects = {
@@ -403,6 +403,7 @@ $(document).ready(function() {
       $('.gamelog li:nth-child(1)').remove();
     }
     $('.gamelog ul').append('<li>'+string+'</li>');
+    $('.gamelog').scrollTop($('.gamelog')[0].scrollHeight);
   }
 
   function fillHand(){
