@@ -445,6 +445,9 @@ $(document).ready(function() {
     player.vp += gain;
     printMsg("Earned "+gain+" victory points!");
     showPlayerStats();
+    if(player.vp > 14){
+      youWin();
+    }
   }
 
   function getTech(){
@@ -524,4 +527,9 @@ $(document).ready(function() {
     $('#playerhand').remove();
     $('.gamelog').html('YOU HAVE BEEN DESTROYED!')
   };
+
+  function youWin(){
+    $('#playerhand').remove();
+    $('.gamelog').html('YOU HAVE DEFEATED ALL OF YOUR ENEMIES,VICTORY!')
+  }
 });
