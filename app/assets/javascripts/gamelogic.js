@@ -347,7 +347,7 @@ $(document).ready(function() {
         resolveEffects.shield += 2;
       }
       else if(playingCards[i].name === 'Antibeam depth charge'){
-        resolveEffects.dam += 3;
+        resolveEffects.dam -= 3;
         resolveEffects.shield += 3;
       }
       else if(playingCards[i].name === 'Emergency repairs'){
@@ -369,8 +369,10 @@ $(document).ready(function() {
     if(resolveEffects.hpgain > 0){
       gainHp(resolveEffects.hpgain);
     }
-    printMsg('You have dealt '+resolveEffects.dam+' damage!');
-    enemyLoseHp(resolveEffects.dam);
+    if(resolveEffects.dam > 0){
+      printMsg('You have dealt '+resolveEffects.dam+' damage!');
+      enemyLoseHp(resolveEffects.dam);
+    }
     zeroEffects();
     showPlayerStats();
   }
