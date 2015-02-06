@@ -105,6 +105,7 @@ $(document).ready(function() {
 //setup functions
   function startSetup(){
     if(turnCounter === 0){
+      $('#playerhand').css('visibility', 'visible');
       turnOnButtons();
       enemySetup();
       playerSetup();
