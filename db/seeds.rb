@@ -1,8 +1,8 @@
 #-------card definitions----------
 enemycardslvl1 = [
-{name: 'Moebius MA squadron', hp: 4, damage: 2, tp: 1, vp: 0, desc: 'mobile armors', img: 'agamemnon.png'},
-{name: 'Drake class', hp: 5, damage: 2, tp: 1, vp: 0, desc: 'light escort', img: 'agamemnon.png'},
-{name: 'Nelson class', hp: 7, damage: 3, tp: 2, vp: 1, desc: 'heavy escort', img: 'agamemnon.png'},
+{name: 'Moebius MA squadron', hp: 4, damage: 2, tp: 1, vp: 0, desc: 'mobile armors', img: 'moebius.jpg'},
+{name: 'Drake class', hp: 5, damage: 2, tp: 1, vp: 0, desc: 'light escort', img: 'drake.jpg'},
+{name: 'Nelson class', hp: 7, damage: 3, tp: 2, vp: 1, desc: 'heavy escort', img: 'nelson.jpg'},
 {name: 'Agamemnon class', hp: 11, damage: 3, tp: 4, vp: 2, desc: 'carrier', img: 'agamemnon.png'}
 ]
 
@@ -27,7 +27,7 @@ attackcards = [
 {name: 'Igelstellung 2', cost: 2, damage: 2, desc: 'upgraded CIWS', img: 'igelstellung.jpg'},
 {name: 'Helldart', cost: 4, damage: 3, desc: 'rapid fire short range missiles', img: 'igelstellung.jpg'},
 {name: 'Valiant Mk.8', cost: 6, damage: 4, desc: 'linear cannon', img: 'igelstellung.jpg'},
-{name: 'Gottfried Mk.71', cost: 8, damage: 5, desc: 'anti-ship laser cannon', img: 'igelstellung.jpg'},
+{name: 'Gottfried Mk.71', cost: 8, damage: 5, desc: 'anti-ship laser cannon', img: 'Gottfried.png'},
 {name: 'Heavy Missile Tubes', cost: 10, damage: 6, desc: 'multipurpose missiles', img: 'igelstellung.jpg'},
 {name: 'Lohengrin', cost: 15, damage: 9, desc: 'positron cannon', img: 'igelstellung.jpg'}
 ]
