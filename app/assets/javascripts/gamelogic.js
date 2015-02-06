@@ -11,6 +11,7 @@ $(document).ready(function() {
   $('.shopbutton').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
+    $('#inventory input').val(0);
   });
   $('.buyall').on('click', function(){
     $('.gamelog').toggle();
