@@ -8,19 +8,31 @@ $(document).ready(function() {
     parsePlayedEffects();
     resolveAllEffects();
     });
+  $('.playall').on('click',function(){
+    togglePlayButton();
+    playAll();
+    parsePlayedEffects();
+    resolveAllEffects();
+  })
   $('.shopbutton').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
+    $('.shopbutton').css('visibility', 'hidden')
+    $('.refillhand').css('visibility', 'hidden')
     $('#inventory input').val(0);
   });
   $('.buyall').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
     getTech();
+    $('.shopbutton').css('visibility', 'visible')
+    $('.refillhand').css('visibility', 'visible')
   });
   $('.cancelshop').on('click', function(){
     $('.gamelog').toggle();
     $('#techshop').toggle();
+    $('.shopbutton').css('visibility', 'visible')
+    $('.refillhand').css('visibility', 'visible')
   });
 
   $('.refillhand').on('click', function(){
@@ -42,11 +54,13 @@ $(document).ready(function() {
   function togglePlayButton(){
     if($('.playselected').css('visibility') === 'visible'){
       $('.playselected').css('visibility', 'hidden')
+      $('.playall').css('visibility', 'hidden')
       $('.shopbutton').css('visibility', 'visible')
       $('.refillhand').css('visibility', 'visible')
     }
     else{
       $('.playselected').css('visibility', 'visible')
+      $('.playall').css('visibility', 'visible')
       $('.shopbutton').css('visibility', 'hidden')
       $('.refillhand').css('visibility', 'hidden')
     }
@@ -103,6 +117,7 @@ $(document).ready(function() {
 
   function turnOnButtons(){
     $('.playselected').css('visibility', 'visible');
+    $('.playall').css('visibility', 'visible');
   }
 
 //enemy setup
@@ -288,6 +303,11 @@ $(document).ready(function() {
     else {
       $(this).attr('class', 'playercard noplay')
     }
+  }
+
+  function playAll(){
+    $('.noplay').attr('class', 'playercard play');
+    playSelectedCards();
   }
 
   function playSelectedCards(){
