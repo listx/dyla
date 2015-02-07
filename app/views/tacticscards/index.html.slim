@@ -1,4 +1,4 @@
-h1 Listing tacticscards
+h1 Tactics Cards Reference
 
 table.reftables
   thead
@@ -6,9 +6,6 @@ table.reftables
       th Name
       th Cost
       th Description
-      th
-      th
-      th
 
   tbody
     - @tacticscards.each do |tacticscard|
@@ -16,10 +13,5 @@ table.reftables
         td = tacticscard.name
         td = tacticscard.cost
         td = tacticscard.description
-        td = link_to 'Show', tacticscard
-        td = link_to 'Edit', edit_tacticscard_path(tacticscard)
-        td = link_to 'Destroy', tacticscard, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
-
-= link_to 'New Tacticscard', new_tacticscard_path
+= link_to "back", root_path

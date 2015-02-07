@@ -1,7 +1,4 @@
 # Dyla
-
-# Todo
-
 # Intro
 
 Deckbuilder game in the style of Dominion.

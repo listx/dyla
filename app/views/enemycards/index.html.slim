@@ -1,4 +1,4 @@
-h1 Listing enemycards
+h1 Enemy Cards Reference
 
 table.reftables
   thead
@@ -10,9 +10,6 @@ table.reftables
       th Vp
       th Tp
       th Description
-      th
-      th
-      th
 
   tbody
     - @enemycards.each do |enemycard|
@@ -24,10 +21,5 @@ table.reftables
         td = enemycard.vp
         td = enemycard.tp
         td = enemycard.description
-        td = link_to 'Show', enemycard
-        td = link_to 'Edit', edit_enemycard_path(enemycard)
-        td = link_to 'Destroy', enemycard, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
-
-= link_to 'New Enemycard', new_enemycard_path
+= link_to "back", root_path
