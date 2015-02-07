@@ -25,11 +25,11 @@ enemycardslvl3 = [
 attackcards = [
 {name: 'Igelstellung 1', cost: 0, damage: 1, desc: 'CIWS point defense', img: 'igelstellung.jpg'},
 {name: 'Igelstellung 2', cost: 2, damage: 2, desc: 'upgraded CIWS', img: 'igelstellung.jpg'},
-{name: 'Helldart', cost: 4, damage: 3, desc: 'rapid fire short range missiles', img: 'igelstellung.jpg'},
-{name: 'Valiant Mk.8', cost: 6, damage: 4, desc: 'linear cannon', img: 'igelstellung.jpg'},
+{name: 'Helldart', cost: 4, damage: 3, desc: 'rapid fire short range missiles', img: 'helldart.jpg'},
+{name: 'Valiant Mk.8', cost: 6, damage: 4, desc: 'linear cannon', img: 'valiant.jpg'},
 {name: 'Gottfried Mk.71', cost: 8, damage: 5, desc: 'anti-ship laser cannon', img: 'Gottfried.png'},
-{name: 'Heavy Missile Tubes', cost: 10, damage: 6, desc: 'multipurpose missiles', img: 'igelstellung.jpg'},
-{name: 'Lohengrin', cost: 15, damage: 9, desc: 'positron cannon', img: 'igelstellung.jpg'}
+{name: 'Heavy Missile Tubes', cost: 10, damage: 6, desc: 'multipurpose missiles', img: 'archangel-missile.jpg'},
+{name: 'Lohengrin', cost: 15, damage: 9, desc: 'positron cannon', img: 'Lohengrin.png'}
 ]
 
 tacticscards = [

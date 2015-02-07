@@ -552,7 +552,6 @@ $(document).ready(function() {
     $('.endgame').css('display', 'block');
     $('.endgame').css('visibility', 'visible');
     $('.endgame').html('YOU HAVE BEEN DESTROYED!');
-    // $('.gamelog').html('YOU HAVE BEEN DESTROYED!')
   };
 
   function youWin(){
