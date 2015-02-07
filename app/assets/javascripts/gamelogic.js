@@ -547,12 +547,17 @@ $(document).ready(function() {
   }
 
   function youLose(){
+    $('.top').remove();
     $('#playerhand').remove();
-    $('.gamelog').html('YOU HAVE BEEN DESTROYED!')
+    $('.endgame').css('visibility', 'visible');
+    $('.endgame').html('YOU HAVE BEEN DESTROYED!');
+    // $('.gamelog').html('YOU HAVE BEEN DESTROYED!')
   };
 
   function youWin(){
+    $('.top').remove();
     $('#playerhand').remove();
-    $('.gamelog').html('YOU HAVE DEFEATED ALL OF YOUR ENEMIES,VICTORY!')
+    $('.endgame').css('visibility', 'visible');
+    $('.endgame').html('YOU HAVE DEFEATED ALL OF YOUR ENEMIES,VICTORY!');
   }
 });
