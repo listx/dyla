@@ -373,6 +373,9 @@ $(document).ready(function() {
       printMsg('You have dealt '+resolveEffects.dam+' damage!');
       enemyLoseHp(resolveEffects.dam);
     }
+    else {
+      enemyAttack();
+    }
     zeroEffects();
     showPlayerStats();
   }
