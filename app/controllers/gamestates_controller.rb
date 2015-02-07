@@ -35,7 +35,7 @@ class GamestatesController < ApplicationController
 
     respond_to do |format|
       if @gamestate.save
-        format.html { redirect_to @gamestate, notice: 'Gamestate was successfully created.' }
+        format.html { redirect_to @gamestate}
         format.json { render :show, status: :created, location: @gamestate }
       else
         format.html { render :new }
