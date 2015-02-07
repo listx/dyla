@@ -7,10 +7,11 @@
 // From https://color.adobe.com/Campfire-color-theme-2528696/
 $c1: #588c7e
 $c2: #f2e394
-//$c3: #f2ae72
 $c3: #00246B
 $c4: #d96459
 $c5: #8c4646
+$border: #666666
+$darkbg: #1A1A1A
 $footer-height: 3.5em
 
 .root-menu
@@ -55,7 +56,7 @@ html
             .enemy-card
               height: 418px
               width: 304px
-              border: 2px solid #666666
+              border: 2px solid $border
               #enemypicture
                 padding: 10px
                 width: 300px
@@ -71,7 +72,7 @@ html
                 color: white
           .userpanel
             #playerhand
-              border: 2px solid #666666
+              border: 2px solid $border
               visibility: hidden
               height: 280px
               background: rgba(0, 36, 107, 0.8)
@@ -95,10 +96,10 @@ html
   text-align: center
   .titlebanner
     color: #99FF99
-    border: 2px solid #666666
+    border: 2px solid $border
     font-size: 20px
     height: 35px
-    background-color: #1A1A1A
+    background-color: $darkbg
     margin-bottom: 5px
     text-align: center
 
@@ -122,13 +123,13 @@ html
     color: black
 
 .gamelog
-  background-color: #1A1A1A
+  background-color: $darkbg
   color: #99FF99
   display: inline-block
   vertical-align: top
   height: 400px
   width: 500px
-  border: 2px solid #666666
+  border: 2px solid $border
   overflow: scroll
   padding: 10px
 
@@ -138,7 +139,7 @@ html
   vertical-align: top
   height: 400px
   width: 500px
-  border: 2px solid #666666
+  border: 2px solid $border
   #inventory
     overflow: scroll
     height: 350px
@@ -164,7 +165,7 @@ html
   vertical-align: top
   width: 150px
   height: 200px
-  border: 2px solid #666666
+  border: 2px solid $border
   padding: 5px
   table#playerStats
     tr
@@ -174,11 +175,11 @@ html
         color: #FFFF00
 
 #playerdeckdiscard
-  background-color: #1A1A1A
+  background-color: $darkbg
   width: 120px
   height: 50px
   margin: 50px auto 0 auto
-  border: 1px solid #666666
+  border: 1px solid $border
   padding: 5px
 
 .enemypic
@@ -237,13 +238,14 @@ html
   visibility: hidden
 
 .endgame
+  display: none
   visibility: hidden
   width: 400px
   height: 300px
   margin: 0 auto 0 auto
   font-size: 36px
-  background-color: #1A1A1A
+  background-color: $darkbg
   color: white
   text-align: center
   padding: 20px
-  border: 2px solid #666666
+  border: 2px solid $border

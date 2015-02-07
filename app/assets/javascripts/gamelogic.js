@@ -549,6 +549,7 @@ $(document).ready(function() {
   function youLose(){
     $('.top').remove();
     $('#playerhand').remove();
+    $('.endgame').css('display', 'block');
     $('.endgame').css('visibility', 'visible');
     $('.endgame').html('YOU HAVE BEEN DESTROYED!');
     // $('.gamelog').html('YOU HAVE BEEN DESTROYED!')
@@ -557,6 +558,7 @@ $(document).ready(function() {
   function youWin(){
     $('.top').remove();
     $('#playerhand').remove();
+    $('.endgame').css('display', 'block');
     $('.endgame').css('visibility', 'visible');
     $('.endgame').html('YOU HAVE DEFEATED ALL OF YOUR ENEMIES,VICTORY!');
   }
