@@ -58,14 +58,14 @@ All tech cards are face up and purchasable with no limitations except TechPoints
 1. *Encounter phase*: Flip over a new encounter card if none are showing.
 2. *Combat phase*: Play any number of tactics cards desired.
 3. Play any number of attack cards desired.
-4. Resolve tactics cards, then resolve damage done by attack cards.
+4. Resolve tactics cards and damage from attack cards.
 5. If Encounter card is not defeated, take return damage from the card.
 6. *Research phase*: Chance to purchase tech cards.
 7. *Discard and Draw phase*: Discard any cards you want. If 5 or fewer cards in hand, draw up to 5.  Else, nothing happens.  Reshuffle deck if necessary.
 
 ## Rules details
 
-Victory/lose conditions: Player wins when an arbitrary number of victory points(15?) is accrued from defeating enemies.  Player loses if hit points reach 0.
+Victory/lose conditions: Player wins when an arbitrary number of victory points(15) is accrued from defeating enemies.  Player loses if hit points reach 0.
 
 Player hit points - The player has a maximum health of 10.
 
@@ -75,7 +75,7 @@ Tech cards (buy) - When purchased, they go directly on top of your deck.  If you
 
 Encounter cards - Split into 3 decks, of level 1, 2, and 3 difficulty enemies.  Each deck will contain ample cards and will be shuffled for randomness each game.  Player completes each deck once 5 VP are obtained from that particular deck.  Encounters are always played one at a time.
 
-Full repair - Players are fully healed to 10 hp after Encounter decks 1 and 2 have each been completed.
+Full repair - Players are fully healed to 10 hp after Encounter decks 1 and 2 have each been completed. *Not implemented yet, will see if needed*
 
 Persistent damage - Enemy ships will retain all damage dealt to them turn to turn until they are defeated.
 
@@ -132,12 +132,3 @@ Vesalius                 14       4         2         1
 Dominion                 15       5         4         1
 Peacemaker Fleet         20       9         6         2
 ```
-
-## Information needed to be displayed on the screen
-
-- player current/max hp
-- player TP(tech points)
-- player VP(victory points)
-- player deck cards left
-- all of the players current cards in hand
-- current active encounter

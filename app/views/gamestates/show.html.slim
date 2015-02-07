@@ -1,6 +1,14 @@
 #notice
   .titlebanner Welcome to DYLA, a space combat deck building game!
   button type="button" class="startnew" start new game
+.gamenotices
+  span.objectives
+    ul
+      li Play your cards to damage enemies and defeat them, or to save your own skin.
+      li Earn Victory Points(VP) and Technology Points(TP) when you defeat the enemy.
+      li Spend TP to purchase new upgrades/cards, which will be immediately available the next time you draw.
+      li Enemies get noticably tougher every 5 VPs, reach 15 to win!
+
 .top
   .enemypanel
     = render 'enemypanel'
@@ -17,8 +25,6 @@
 
 .userpanel
   = render 'userpanel'
-
-.endgame
 
 = link_to 'Edit', edit_gamestate_path(@gamestate)
 '|

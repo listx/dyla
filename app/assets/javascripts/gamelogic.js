@@ -101,6 +101,8 @@ $(document).ready(function() {
 //setup functions
   function startSetup(){
     if(turnCounter === 0){
+      $('.objectives').remove();
+      $('.gamenotices').css('display', 'none');
       $('#playerhand').css('visibility', 'visible');
       $('.top').css('visibility', 'visible');
       turnOnButtons();
@@ -549,16 +551,14 @@ $(document).ready(function() {
   function youLose(){
     $('.top').remove();
     $('#playerhand').remove();
-    $('.endgame').css('display', 'block');
-    $('.endgame').css('visibility', 'visible');
-    $('.endgame').html('YOU HAVE BEEN DESTROYED!');
+    $('.gamenotices').css('display', 'block');
+    $('.gamenotices').html('YOU HAVE BEEN DESTROYED!');
   };
 
   function youWin(){
     $('.top').remove();
     $('#playerhand').remove();
-    $('.endgame').css('display', 'block');
-    $('.endgame').css('visibility', 'visible');
-    $('.endgame').html('YOU HAVE DEFEATED ALL OF YOUR ENEMIES,VICTORY!');
+    $('.gamenotices').css('display', 'block');
+    $('.gamenotices').html('YOU HAVE DEFEATED ALL OF YOUR ENEMIES,VICTORY!');
   }
 });
