@@ -37,7 +37,7 @@ gem 'slim-rails', '~> 3.0.1'
 gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'bootstrap_form', '~> 2.2.0'
 gem 'font-awesome-sass', '~> 4.2.0'
-
+gem 'pg'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -47,5 +47,4 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'pg'
 end
