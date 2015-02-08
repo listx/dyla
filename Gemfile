@@ -38,6 +38,10 @@ gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'bootstrap_form', '~> 2.2.0'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'pg'
+
+# make Heroku sane
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
